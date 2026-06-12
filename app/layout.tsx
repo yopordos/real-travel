@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import './globals.css'
+import { AppShell } from '@/components/layout/AppShell'
 import { PwaRegister } from '@/components/pwa/PwaRegister'
 
 // Serif editorial para titulares — registro revista, no app genérica
@@ -46,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className={`${fraunces.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <body className={`${fraunces.variable} ${dmSans.variable}`}>
         <PwaRegister />
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   )

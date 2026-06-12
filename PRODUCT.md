@@ -2,51 +2,39 @@
 
 ## Register
 
-dual: la landing de plataforma (`app/(marketing)`) es **brand**; la app del viajero (`app/(app)`) es **product**.
-
-## Product Purpose
-
-Real Travel es una **plataforma de inteligencia turística** que transforma la promoción de destinos en gestión basada en datos empíricos. Mide qué hacen los visitantes para mejorar la toma de decisiones.
-
-Dos frentes:
-
-- **B2C (app del viajero)**: guía de viajes offline con mapas interactivos. Descubrir rutas, atracciones y comercios locales; compartir experiencias con una comunidad de viajeros.
-- **B2B (instituciones)**: herramientas digitales para municipios, hoteles, gremios, aeropuertos y DMOs: mapas interactivos, kioscos táctiles, códigos QR y ChatRT (asistente de IA). Acceso a un observatorio de datos: comportamiento del turista, Índice de Retención Local, justificación de presupuestos con evidencia.
-
-**Impacto**: opera en 14 países, 21.000+ puntos de interés digitalizados, premiada en los WSA 2024 (Tourism & Culture).
+product
 
 ## Users
 
-- **El turista cultural en movimiento** (app): ya eligió su destino y quiere ir más allá de lo obvio. Camina por una ciudad desconocida, teléfono en mano, bajo el sol, posiblemente sin conexión. Explorador curioso que viaja con criterio.
-- **El gestor de destino** (landing/plataforma): director de turismo municipal, gerente de DMO, hotelero. Necesita justificar presupuestos con evidencia, no con intuición. Evalúa proveedores con escepticismo profesional; la credibilidad institucional (premios, países, datos) pesa.
+El usuario principal es el **turista cultural en movimiento**: alguien que ya eligió su destino y quiere ir más allá de los puntos turísticos obvios. Busca el contexto humano detrás de cada lugar, la historia del edificio, la perspectiva del residente que vive en ese barrio. Está caminando por una ciudad desconocida, teléfono en mano, bajo el sol. No es el mochilero de hostel ni el turista de paquete todo incluido: es el explorador curioso que viaja con criterio.
+
+## Product Purpose
+
+Real Travel es una guía de viaje inteligente que conecta a viajeros con destinos a través de historias locales. A diferencia de Google Maps o TripAdvisor, cada lugar tiene contenido editorial narrativo producido por residentes, no solo reseñas de usuarios. La propuesta incluye funcionalidad offline para zonas sin conexión, una red de comercios locales con beneficios exclusivos para viajeros (modelo B2B), y herramientas de comunidad para compartir rutas y reseñas.
 
 ## Brand Personality
 
-**Aventurero, Vivo, Libre** — con rigor de datos.
+**Aventurero, Vivo, Libre.**
 
-La app se siente como un compañero local con buen gusto editorial. La plataforma se presenta con la seriedad de quien mide: evidencia sobre adjetivos, números tabulares sobre promesas. Nunca turismo corporativo genérico.
+Tono de alguien que viaja con gusto y criterio propio. La app debería sentirse como un compañero local con buen gusto editorial, no como una base de datos de turismo corporativo. Energía de descubrimiento: algo interesante siempre a la vuelta de la esquina, sin caos ni sobrecarga.
 
 ## Anti-references
 
-- **TripAdvisor**: listas interminables, jerarquía plana, estética de turismo masivo.
-- **Google Maps**: utilitario puro, sin contexto cultural ni personalidad editorial.
-- **Folleto turístico genérico**: gradientes de atardecer, fotos stock de parejas, iconos de aviones y maletas.
-- **SaaS dashboard genérico** (para la landing): hero-metric con gradiente, cards idénticas de features, copy de "soluciones integrales".
+- **TripAdvisor**: listas interminables, densidad visual de reseñas, jerarquía plana, estética del turismo masivo.
+- **Google Maps**: utilitario puro, frío, sin personalidad editorial, sin contexto cultural, no invita a explorar.
+- **Folleto turístico genérico**: gradientes de puesta de sol, fotos de stock de parejas caminando, iconos de aviones y maletas.
 
 ## Design Principles
 
-1. **El contenido es el producto.** Historias locales en la app; evidencia y datos en la plataforma. El diseño los presenta con respeto editorial.
-2. **Diseñado para estar en movimiento.** El viajero camina bajo sol directo con una mano libre. Velocidad, legibilidad, gestos directos.
-3. **Local sobre genérico.** Cada decisión debería sentirse hecha por alguien que vive en ese lugar.
-4. **La evidencia habla.** En superficies B2B: números reales tabulares, métricas con fuente, cero promesas vacías. Los datos del impacto (14 países, 21k POIs, WSA 2024) son argumentos, no decoración.
-5. **Rojo que significa algo.** El carmesí (#C41230) marca acción, dirección, lo que importa. Disciplina de señal, no adorno.
-
-## Design Language
-
-- Serif editorial **Fraunces** para titulares (ambos registros: hilo de marca); **DM Sans** para UI, kickers y body.
-- Tinta cálida (#1c1a17) sobre papel (#faf9f6). Cards editoriales sin caja en la app.
-- En la landing: registro datos/inteligencia con la misma familia tipográfica; reglas horizontales, tablas vivas, `tabular-nums`.
+1. **El contenido es el producto.** Las historias locales son el valor central. El diseño las presenta con el respeto de un editor: espacio, tipografía, jerarquía. No las sepulta bajo interfaz.
+2. **Diseñado para estar en movimiento.** El usuario camina por una ciudad desconocida, posiblemente bajo luz solar directa, con una sola mano libre. Velocidad, legibilidad y gestos directos no son opcionales.
+3. **Local sobre genérico.** Cada decisión de diseño debería poder responder: "¿Se siente esto hecho por alguien que vive en ese lugar?" Si la respuesta es no, reconsiderar.
+4. **Aventurero sin caos.** Energía de descubrimiento sin sobrecarga de información. La tensión entre libertad y orientación se resuelve a favor del usuario: siempre sabe dónde está, pero nunca se siente limitado.
+5. **Rojo que significa algo.** El acento carmesí (#C41230) no es decoración. Marca acción, dirección, lo que importa. Usarlo con disciplina de señal, no de adorno.
 
 ## Accessibility & Inclusion
 
-WCAG 2.2 AA mínimo. Contraste elevado para luz solar directa; áreas de toque generosas para uso con una mano; modo offline comunicado con claridad.
+WCAG 2.2 AA como mínimo. Considerar especialmente:
+- Uso bajo luz solar directa: contraste elevado en texto sobre fondos claros.
+- Uso con una sola mano mientras se camina: áreas de toque generosas, no interacciones que requieran dos manos.
+- Modo offline: la app debe comunicar claramente qué contenido está disponible sin conexión.
