@@ -26,52 +26,57 @@
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* Estilos base dentro de @layer base: fuera de una capa, `* { margin: 0 }`
+   gana a las utilidades de Tailwind y deja inertes todas las clases de
+   espaciado (pt-*, mt-*, px-*) de la app entera. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-html {
-  font-family: var(--font-family-body);
-  font-size: 16px;
-  background-color: var(--color-surface);
-  color: var(--color-text-primary);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
-}
+  html {
+    font-family: var(--font-family-body);
+    font-size: 16px;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
 
-body {
-  min-height: 100dvh;
-  background:
-    radial-gradient(ellipse 130% 55% at -5% -5%, rgba(196, 18, 48, 0.045) 0%, transparent 58%),
-    radial-gradient(ellipse 90% 45% at 105% 105%, rgba(196, 18, 48, 0.025) 0%, transparent 58%),
-    var(--color-surface);
-  background-attachment: fixed;
-  line-height: 1.6;
-  font-family: var(--font-family-body);
-  overflow-x: hidden;
-}
+  body {
+    min-height: 100dvh;
+    background:
+      radial-gradient(ellipse 130% 55% at -5% -5%, rgba(196, 18, 48, 0.045) 0%, transparent 58%),
+      radial-gradient(ellipse 90% 45% at 105% 105%, rgba(196, 18, 48, 0.025) 0%, transparent 58%),
+      var(--color-surface);
+    background-attachment: fixed;
+    line-height: 1.6;
+    font-family: var(--font-family-body);
+    overflow-x: hidden;
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-family-display);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-}
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-display);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
 
-/* Consistent focus ring — accessible, branded */
-:focus-visible {
-  outline: 2px solid var(--color-crimson);
-  outline-offset: 3px;
-  border-radius: 6px;
-}
+  /* Consistent focus ring — accessible, branded */
+  :focus-visible {
+    outline: 2px solid var(--color-crimson);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
 
-/* Clickable always shows pointer */
-button, a, [role="button"], [role="tab"] {
-  cursor: pointer;
+  /* Clickable always shows pointer */
+  button, a, [role="button"], [role="tab"] {
+    cursor: pointer;
+  }
 }
 
 /* Hovers con tokens — para server components que no pueden usar handlers */
@@ -144,4 +149,36 @@ button, a, [role="button"], [role="tab"] {
     opacity: 1;
     transform: none;
   }
+}
+
+/* ── Landing: mapa del hero ─────────────────────────────────────────────────
+   Los puntos del destino entran uno a uno; el escalonado lo controla React. */
+.leaflet-container {
+  background: var(--color-map-placeholder);
+  font-family: var(--font-family-body);
+}
+
+.rt-pin {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-crimson);
+  border: 2px solid #fff;
+  box-shadow: 0 1px 5px rgba(45, 20, 8, 0.3);
+  animation: rt-pin-in 0.4s var(--ease-spring) both;
+}
+
+@keyframes rt-pin-in {
+  from { opacity: 0; transform: scale(0.2); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.rt-route {
+  animation: rt-route-in 0.6s var(--ease-smooth) both;
+}
+
+@keyframes rt-route-in {
+  from { opacity: 0; }
+  to { opacity: 0.85; }
 }

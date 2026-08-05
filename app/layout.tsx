@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Fraunces, DM_Sans } from 'next/font/google'
 import './globals.css'
-import { AppShell } from '@/components/layout/AppShell'
-import { PwaRegister } from '@/components/pwa/PwaRegister'
 
 // Serif editorial para titulares — registro revista, no app genérica
 const fraunces = Fraunces({
@@ -19,8 +17,9 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Real Travel',
-  description: 'Descubre destinos a través de historias locales',
+  title: 'Real Travel — Plataforma de destino',
+  description:
+    'Publica lugares, rutas y prestadores de tu territorio en una plataforma que el visitante usa y que te devuelve datos de uso.',
   manifest: '/manifest.json',
   icons: {
     icon: [
@@ -45,10 +44,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${fraunces.variable} ${dmSans.variable}`} suppressHydrationWarning>
-      <body className={`${fraunces.variable} ${dmSans.variable}`}>
-        <PwaRegister />
-        <AppShell>{children}</AppShell>
-      </body>
+      <body className={`${fraunces.variable} ${dmSans.variable}`}>{children}</body>
     </html>
   )
 }

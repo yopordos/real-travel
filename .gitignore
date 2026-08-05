@@ -30,3 +30,4 @@ next-env.d.ts
 
 # Impeccable (critiques locales)
 .impeccable/
+.gstack/
