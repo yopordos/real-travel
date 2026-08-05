@@ -16,8 +16,7 @@ export function EvidenceBar({ copy }: { copy: LandingCopy['evidence'] }) {
           {copy.items.map((item, i) => (
             <div
               key={item.label}
-              className="reveal px-0 md:px-6 first:pl-0"
-              data-delay={i * 60}
+              className="px-0 md:px-6 first:pl-0"
               style={{ borderLeft: i === 0 ? 'none' : '1px solid var(--color-border)' }}
             >
               <dt className="sr-only">{item.label}</dt>

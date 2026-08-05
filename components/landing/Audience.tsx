@@ -17,11 +17,10 @@ export function Audience({ copy }: { copy: LandingCopy['audience'] }) {
       </h2>
 
       <div className="mt-14 grid gap-10 md:gap-8 md:grid-cols-3">
-        {copy.items.map((item, i) => (
+        {copy.items.map(item => (
           <div
             key={item.role}
-            className="reveal pt-6"
-            data-delay={i * 80}
+            className="pt-6"
             style={{ borderTop: '2px solid var(--color-crimson)' }}
           >
             <h3

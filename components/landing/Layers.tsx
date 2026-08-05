@@ -68,7 +68,7 @@ export function Layers({ copy }: { copy: LandingCopy }) {
               className="grid gap-8 md:gap-14 md:grid-cols-2 md:items-center"
               style={{ borderTop: '1px solid var(--color-border)', paddingTop: '40px' }}
             >
-              <div className={`reveal ${reversed ? 'md:order-2' : ''}`}>
+              <div className={reversed ? 'md:order-2' : ''}>
                 <div className="flex gap-3.5 mb-5">
                   <LayerMark index={i} />
                   <span
@@ -97,7 +97,7 @@ export function Layers({ copy }: { copy: LandingCopy }) {
                 </p>
               </div>
 
-              <div className={`reveal ${reversed ? 'md:order-1' : ''}`} data-delay="80">
+              <div className={reversed ? 'md:order-1' : ''}>
                 {mocks[layer.mock]}
               </div>
             </article>

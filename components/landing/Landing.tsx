@@ -7,7 +7,6 @@ import { Audience } from './Audience'
 import { Steps } from './Steps'
 import { Contact } from './Contact'
 import { MarketingFooter } from './MarketingFooter'
-import { RevealRoot } from './RevealRoot'
 
 /** La landing completa. Recibe su idioma por props; no conoce el diccionario. */
 export function Landing({ copy }: { copy: LandingCopy }) {
@@ -25,12 +24,10 @@ export function Landing({ copy }: { copy: LandingCopy }) {
 
       <main id="contenido">
         <Hero copy={copy} />
-        <RevealRoot>
-          <EvidenceBar copy={copy.evidence} />
-          <Layers copy={copy} />
-          <Audience copy={copy.audience} />
-          <Steps copy={copy.steps} />
-        </RevealRoot>
+        <EvidenceBar copy={copy.evidence} />
+        <Layers copy={copy} />
+        <Audience copy={copy.audience} />
+        <Steps copy={copy.steps} />
         <Contact copy={copy.contact} />
       </main>
 

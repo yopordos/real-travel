@@ -19,7 +19,7 @@ export function Steps({ copy }: { copy: LandingCopy['steps'] }) {
 
       <ol className="mt-14 grid gap-10 md:gap-8 md:grid-cols-3">
         {copy.items.map((item, i) => (
-          <li key={item.title} className="reveal" data-delay={i * 80}>
+          <li key={item.title}>
             <span
               className="block font-bold mb-3"
               style={{
