@@ -13,6 +13,7 @@ export interface LandingCopy {
     lead: string
     ctaPrimary: string
     ctaSecondary: string
+    ctaNote: string
     mapDescription: string
     mapCaption: string
   }
@@ -88,15 +89,16 @@ export const es: LandingCopy = {
   nav: {
     platform: 'Plataforma',
     audience: 'Para quién',
-    cta: 'Agendar demo',
+    cta: 'Contáctanos',
     skipToContent: 'Saltar al contenido',
   },
   hero: {
     kicker: 'Plataforma de destino',
     title: 'Publica tu territorio. Mide quién lo recorre.',
     lead: 'Real Travel pone los lugares, rutas y prestadores de tu destino en una plataforma que el visitante usa mientras camina — y devuelve a tu gestión los datos de ese recorrido.',
-    ctaPrimary: 'Agendar una demo',
-    ctaSecondary: 'Ver la plataforma',
+    ctaPrimary: 'Ver la plataforma',
+    ctaSecondary: 'Contáctanos',
+    ctaNote: 'Abierta y en línea: entra sin registrarte.',
     mapDescription: `Mapa de ${territory.place} con los puntos de interés del destino y una ruta trazada entre ellos.`,
     mapCaption: `${territory.place} — 84 puntos publicados`,
   },
@@ -250,15 +252,16 @@ export const en: LandingCopy = {
   nav: {
     platform: 'Platform',
     audience: 'Who it serves',
-    cta: 'Book a demo',
+    cta: 'Contact us',
     skipToContent: 'Skip to content',
   },
   hero: {
     kicker: 'Destination platform',
     title: 'Publish your territory. Measure who walks it.',
     lead: 'Real Travel puts your destination’s places, routes and providers on a platform visitors use while walking — and returns the data from that journey to your team.',
-    ctaPrimary: 'Book a demo',
-    ctaSecondary: 'See the platform',
+    ctaPrimary: 'See the platform',
+    ctaSecondary: 'Contact us',
+    ctaNote: 'Open and online: no sign-up needed.',
     mapDescription: `Map of ${territory.place} showing the destination’s points of interest and a route drawn between them.`,
     mapCaption: `${territory.place} — 84 points published`,
   },

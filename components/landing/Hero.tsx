@@ -40,22 +40,26 @@ export function Hero({ copy }: { copy: LandingCopy }) {
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a
-              href="#contacto"
-              className="px-6 py-3.5 text-[14px] font-semibold rounded-full"
-              style={{ background: 'var(--color-crimson)', color: 'white' }}
-            >
-              {copy.hero.ctaPrimary}
-            </a>
-            <a
               href={WEBAPP}
               target="_blank"
               rel="noreferrer"
               className="px-6 py-3.5 text-[14px] font-semibold rounded-full"
+              style={{ background: 'var(--color-crimson)', color: 'white' }}
+            >
+              {copy.hero.ctaPrimary} ↗
+            </a>
+            <a
+              href="#contacto"
+              className="px-6 py-3.5 text-[14px] font-semibold rounded-full"
               style={{ border: '1px solid var(--color-border)' }}
             >
-              {copy.hero.ctaSecondary} ↗
+              {copy.hero.ctaSecondary}
             </a>
           </div>
+
+          <p className="mt-4 text-[13px]" style={{ color: 'var(--color-text-muted)' }}>
+            {copy.hero.ctaNote}
+          </p>
         </div>
 
         {/* El mapa sale del contenedor hacia el borde derecho de la ventana */}
