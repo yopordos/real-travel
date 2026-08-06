@@ -26,7 +26,7 @@ export function MapExplorer({ copy }: { copy: LandingCopy['mapExplorer'] }) {
   const point = copy.points[active]
 
   return (
-    <section className="pb-14 md:pb-20">
+    <section className="pt-20 pb-14 md:pt-28 md:pb-20">
       <div className={CONTAINER}>
         <SectionHead kicker={copy.kicker} title={copy.title} lead={copy.lead} />
 

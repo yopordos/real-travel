@@ -125,7 +125,7 @@ export function Hero({ copy }: { copy: LandingCopy }) {
                 height={860}
                 priority
                 sizes="(min-width: 1024px) 46vw, 100vw"
-                className="w-full h-auto transition-transform duration-300 group-hover:-translate-y-1"
+                className="w-full h-auto rt-parallax-rise"
                 style={{
                   borderRadius: 'var(--rt-radius)',
                   boxShadow: '0 24px 60px rgba(12,12,19,0.45)',
