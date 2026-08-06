@@ -17,6 +17,10 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
 
   const home = copy.locale === 'es' ? '/' : '/en'
 
+  // Sobre el hero oscuro el nav va en claro; al hacer scroll vuelve al papel
+  const onDark = !scrolled
+  const linkColor = onDark ? 'rgba(242,243,247,0.9)' : 'var(--rt-slate)'
+
   const links = [
     { href: '#problema', label: copy.nav.problem },
     { href: '#como-funciona', label: copy.nav.how },
@@ -26,7 +30,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
 
   return (
     <header
-      className="sticky top-0 z-50 transition-colors duration-200"
+      className="fixed inset-x-0 top-0 z-50 transition-colors duration-200"
       style={{
         background: scrolled ? 'rgba(242, 243, 239, 0.9)' : 'transparent',
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
@@ -37,11 +41,15 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
         <Link
           href={home}
           className="flex items-center gap-2 shrink-0 font-semibold"
-          style={{ fontSize: '17px', color: 'var(--rt-ink)', letterSpacing: '-0.02em' }}
+          style={{
+            fontSize: '17px',
+            color: onDark ? 'var(--rt-white-text)' : 'var(--rt-ink)',
+            letterSpacing: '-0.02em',
+          }}
         >
           <span
             className="block w-2.5 h-2.5 rounded-full"
-            style={{ background: 'var(--rt-red-700)' }}
+            style={{ background: onDark ? 'var(--rt-amber-500)' : 'var(--rt-red-700)' }}
             aria-hidden="true"
           />
           Real Travel
@@ -53,7 +61,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
               key={link.href}
               href={link.href}
               className="text-[14px] font-medium"
-              style={{ color: 'var(--rt-slate)' }}
+              style={{ color: linkColor }}
             >
               {link.label}
             </a>
@@ -66,7 +74,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
             target="_blank"
             rel="noreferrer"
             className="hidden md:inline text-[14px] font-semibold"
-            style={{ color: 'var(--rt-red-700)' }}
+            style={{ color: onDark ? 'var(--rt-amber-500)' : 'var(--rt-red-700)' }}
           >
             {copy.nav.platform} ↗
           </a>
@@ -74,7 +82,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
           <a
             href="#contacto"
             className="hidden sm:inline text-[14px] font-medium"
-            style={{ color: 'var(--rt-slate)' }}
+            style={{ color: linkColor }}
           >
             {copy.nav.contact}
           </a>
@@ -82,7 +90,10 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
           <Link
             href={copy.altHref}
             className="text-[12px] font-semibold px-2 py-1"
-            style={{ color: 'var(--rt-slate-40)', letterSpacing: '0.06em' }}
+            style={{
+              color: onDark ? 'rgba(242,243,247,0.65)' : 'var(--rt-slate-40)',
+              letterSpacing: '0.06em',
+            }}
             aria-label={copy.locale === 'es' ? 'Switch to English' : 'Cambiar a español'}
           >
             {copy.altLabel}
