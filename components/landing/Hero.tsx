@@ -6,7 +6,7 @@ const WEBAPP = 'https://webapp.realtravelapp.com/'
 
 export function Hero({ copy }: { copy: LandingCopy }) {
   return (
-    <section className="pt-12 pb-16 md:pt-20 md:pb-24">
+    <section className="pt-10 pb-14 md:pt-16 md:pb-18">
       <div className={`${CONTAINER} grid gap-12 lg:gap-14 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center`}>
         <div>
           <Kicker>{copy.hero.kicker}</Kicker>
@@ -51,7 +51,7 @@ export function Hero({ copy }: { copy: LandingCopy }) {
         {/* La plataforma real sobre un panel fotográfico: textura detrás, producto delante */}
         <figure className="relative m-0 p-4 md:p-7">
           <div
-            className="absolute inset-0 overflow-hidden"
+            className="absolute inset-0 overflow-clip"
             style={{ borderRadius: 'var(--rt-radius-xl)' }}
             aria-hidden="true"
           >
@@ -61,7 +61,7 @@ export function Hero({ copy }: { copy: LandingCopy }) {
               fill
               priority
               sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover"
+              className="object-cover rt-parallax-slow"
             />
             <div
               className="absolute inset-0"

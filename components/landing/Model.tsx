@@ -5,10 +5,10 @@ import { CONTAINER, Kicker } from './primitives'
 /** El único bloque en rojo pleno de la página: marca el argumento comercial. */
 export function Model({ copy }: { copy: LandingCopy['model'] }) {
   return (
-    <section className="pb-16 md:pb-24">
+    <section className="pb-14 md:pb-20">
       <div className={CONTAINER}>
         <div
-          className="relative overflow-hidden px-8 py-12 md:px-16 md:py-16 text-center"
+          className="relative overflow-clip px-8 py-10 md:px-16 md:py-14 text-center"
           style={{ background: 'var(--rt-red-700)', borderRadius: 'var(--rt-radius-xl)' }}
         >
           {/* Fotografía apenas visible bajo el rojo: da materia sin restar contraste */}
@@ -17,7 +17,7 @@ export function Model({ copy }: { copy: LandingCopy['model'] }) {
             alt=""
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover rt-parallax-slow"
             style={{ opacity: 0.16 }}
             aria-hidden="true"
           />

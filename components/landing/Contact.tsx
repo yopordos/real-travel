@@ -45,7 +45,7 @@ export function Contact({
   }, [products])
 
   return (
-    <section id="contacto" className="py-16 md:py-24 scroll-mt-20">
+    <section id="contacto" className="py-14 md:py-20 scroll-mt-20">
       {/* Destino de los enlaces "¡Me interesa!" de cada producto */}
       {products.map(p => (
         <span key={p.id} id={`${ANCHOR}${p.id}`} className="sr-only" />

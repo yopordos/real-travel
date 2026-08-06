@@ -243,3 +243,63 @@
   outline: 2px solid var(--rt-red-600);
   outline-offset: 3px;
 }
+
+/* ── Profundidad: parallax ligado al scroll ─────────────────────────────────
+   Animaciones nativas con animation-timeline: sin JavaScript, sin listeners y
+   sin coste en el hilo principal. Donde el navegador no las soporta, la
+   imagen simplemente queda quieta. */
+.rt-parallax {
+  will-change: transform;
+}
+
+/* Sin el atajo `animation`: fija la duración en 0s y con animation-timeline
+   debe quedar en `auto`, o la animación no avanza con el scroll. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rt-parallax,
+    .rt-parallax-slow {
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    .rt-parallax {
+      animation-name: rt-parallax;
+    }
+
+    /* La capa de fondo se mueve al revés que el contenido: separa los planos */
+    .rt-parallax-slow {
+      animation-name: rt-parallax-slow;
+    }
+  }
+}
+
+@keyframes rt-parallax {
+  from { transform: translate3d(0, -7%, 0); }
+  to { transform: translate3d(0, 7%, 0); }
+}
+
+@keyframes rt-parallax-slow {
+  from { transform: translate3d(0, -3.5%, 0) scale(1.06); }
+  to { transform: translate3d(0, 3.5%, 0) scale(1.06); }
+}
+
+/* Fondo de la landing: un degradado apenas perceptible en vez de un plano */
+.rt-scope {
+  background:
+    radial-gradient(ellipse 120% 60% at 8% -10%, rgba(181, 9, 51, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 50% at 100% 8%, rgba(242, 166, 90, 0.09) 0%, transparent 55%),
+    var(--rt-bg);
+}
+
+/* Las tarjetas de producto se levantan al pasar por encima */
+.rt-lift {
+  transition: transform var(--dur, 200ms) var(--ease-out, cubic-bezier(0.22, 1, 0.36, 1)),
+    box-shadow var(--dur, 200ms) ease;
+}
+.rt-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--rt-shadow-card);
+}

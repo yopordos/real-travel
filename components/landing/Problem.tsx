@@ -1,24 +1,33 @@
 import type { LandingCopy } from '@/lib/landing-copy'
-import { CONTAINER, Card, SectionHead } from './primitives'
+import { CONTAINER, SectionHead } from './primitives'
 
+/**
+ * Los tres puntos van como lista con reglas, no como tarjetas: son una línea
+ * cada uno y encajonarlos solo añadía altura.
+ */
 export function Problem({ copy }: { copy: LandingCopy['problem'] }) {
   return (
-    <section id="problema" className="py-16 md:py-24 scroll-mt-20" style={{ background: 'var(--rt-surface)' }}>
-      <div className={CONTAINER}>
+    <section id="problema" className="py-14 md:py-20 scroll-mt-20" style={{ background: 'var(--rt-surface)' }}>
+      <div
+        className={`${CONTAINER} grid gap-10 lg:gap-16 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center`}
+      >
         <SectionHead kicker={copy.kicker} title={copy.title} lead={copy.lead} />
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
+        <dl className="flex flex-col">
           {copy.items.map(item => (
-            <Card key={item.title} className="h-full">
-              <h3 className="font-semibold" style={{ fontSize: '18px', lineHeight: 1.28 }}>
+            <div key={item.title} className="py-5" style={{ borderTop: '1px solid var(--rt-border-soft)' }}>
+              <dt className="font-semibold" style={{ fontSize: '17px', lineHeight: 1.3 }}>
                 {item.title}
-              </h3>
-              <p className="mt-3 text-[15px]" style={{ lineHeight: 1.5, color: 'var(--rt-slate-60)' }}>
+              </dt>
+              <dd
+                className="mt-1.5 text-[15px]"
+                style={{ lineHeight: 1.5, color: 'var(--rt-slate-60)' }}
+              >
                 {item.body}
-              </p>
-            </Card>
+              </dd>
+            </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   )

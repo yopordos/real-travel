@@ -18,13 +18,13 @@ const CARD: React.CSSProperties = {
  */
 export function Products({ copy }: { copy: LandingCopy['products'] }) {
   return (
-    <section id="productos" className="py-16 md:py-24 scroll-mt-20" style={{ background: 'var(--rt-surface)' }}>
+    <section id="productos" className="py-14 md:py-20 scroll-mt-20" style={{ background: 'var(--rt-surface)' }}>
       <div className={CONTAINER}>
         <SectionHead kicker={copy.kicker} title={copy.title} lead={copy.lead} />
 
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 items-start">
           {copy.items.map(product => (
-            <details key={product.id} id={product.id} className="group scroll-mt-24" style={CARD}>
+            <details key={product.id} id={product.id} className="group scroll-mt-24 rt-lift" style={CARD}>
               <summary className="flex flex-col md:min-h-[300px] p-6 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                 <Kicker>{product.segment}</Kicker>
 
