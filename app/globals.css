@@ -307,12 +307,29 @@
   transform: scale(1.34);
 }
 
-/* Fondo de la landing: un degradado apenas perceptible en vez de un plano */
+/* Fondo de la landing: retícula de puntos y dos halos, en una capa fija.
+   Va en un pseudo-elemento `position: fixed` en vez de
+   `background-attachment: fixed`, que iOS ignora y que repinta en cada scroll.
+   Las secciones con fondo propio (blanco, hundido, rojo) la tapan: la textura
+   solo asoma donde el papel queda a la vista. */
 .rt-scope {
-  background:
-    radial-gradient(ellipse 120% 60% at 8% -10%, rgba(181, 9, 51, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse 90% 50% at 100% 8%, rgba(242, 166, 90, 0.09) 0%, transparent 55%),
-    var(--rt-bg);
+  position: relative;
+  background: var(--rt-bg);
+  isolation: isolate;
+}
+
+.rt-scope::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--rt-bg);
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(12, 12, 19, 0.09) 1px, transparent 0),
+    radial-gradient(ellipse 120% 60% at 8% -10%, rgba(181, 9, 51, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 90% 50% at 100% 8%, rgba(242, 166, 90, 0.1) 0%, transparent 55%);
+  background-size: 22px 22px, 100% 100%, 100% 100%;
 }
 
 /* Las tarjetas de producto se levantan al pasar por encima */
