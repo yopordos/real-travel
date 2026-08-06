@@ -326,10 +326,10 @@
   pointer-events: none;
   background-color: var(--rt-bg);
   background-image:
-    radial-gradient(circle at 1.5px 1.5px, rgba(12, 12, 19, 0.16) 1.5px, transparent 0),
+    radial-gradient(circle at 1px 1px, rgba(12, 12, 19, 0.13) 1px, transparent 0),
     radial-gradient(ellipse 120% 60% at 8% -10%, rgba(181, 9, 51, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse 90% 50% at 100% 8%, rgba(242, 166, 90, 0.1) 0%, transparent 55%);
-  background-size: 18px 18px, 100% 100%, 100% 100%;
+  background-size: 24px 24px, 100% 100%, 100% 100%;
 }
 
 /* Las tarjetas de producto se levantan al pasar por encima */
