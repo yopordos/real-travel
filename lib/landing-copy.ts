@@ -1,85 +1,79 @@
-// ─── Copy de la landing institucional ─────────────────────────────────────────
+// ─── Copy de la landing ───────────────────────────────────────────────────────
+// Fuente: Dropbox/WIP/01. Real Travel/WebApp/02. Landing/Real_Travel_Landing.pdf
 // Una sola fuente por idioma. El tipo LandingCopy es la garantía de paridad:
 // si falta una clave en `en`, el build falla.
+
+export interface Feature {
+  title: string
+  body: string
+}
+
+export interface Product {
+  id: string
+  segment: string
+  name: string
+  audience: string
+  pitch: string
+  detailTitle: string
+  detailAudience: string
+  includes: string[]
+  benefits: string[]
+  note?: string
+}
 
 export interface LandingCopy {
   locale: 'es' | 'en'
   altHref: string
   altLabel: string
-  nav: { platform: string; audience: string; cta: string; skipToContent: string }
+  nav: {
+    problem: string
+    how: string
+    products: string
+    why: string
+    contact: string
+    platform: string
+    cta: string
+    skipToContent: string
+  }
   hero: {
     kicker: string
     title: string
     lead: string
     ctaPrimary: string
     ctaSecondary: string
-    ctaNote: string
-    mapDescription: string
-    mapCaption: string
+    chips: string[]
+    illustrationAlt: string
   }
-  evidence: { label: string; items: { value: string; label: string }[] }
-  layers: {
-    sectionKicker: string
-    sectionTitle: string
-    sectionLead: string
-    items: {
-      id: string
-      layer: string
-      title: string
-      body: string
-      mock: 'destino' | 'panel' | 'prestador'
-    }[]
+  problem: { kicker: string; title: string; lead: string; items: Feature[] }
+  how: { kicker: string; title: string; lead: string; steps: Feature[] }
+  model: { kicker: string; title: string; lead: string }
+  products: {
+    kicker: string
+    title: string
+    lead: string
+    items: Product[]
+    helpTitle: string
+    helpBody: string
+    helpCta: string
+    detailIncludes: string
+    detailBenefits: string
+    seeDetail: string
   }
-  audience: {
-    sectionKicker: string
-    sectionTitle: string
-    items: { role: string; pain: string; gain: string }[]
-  }
-  steps: {
-    sectionKicker: string
-    sectionTitle: string
-    items: { title: string; body: string }[]
-  }
+  why: { kicker: string; title: string; lead: string; items: Feature[] }
   contact: {
     kicker: string
     title: string
     lead: string
-    fields: { name: string; org: string; email: string; message: string }
+    bullets: string[]
+    fields: { name: string; email: string; subject: string; message: string }
+    placeholders: { name: string; email: string; message: string }
+    subjectOptions: string[]
     submit: string
+    reply: string
     fallbackLead: string
     fallbackEmail: string
   }
-  mocks: {
-    destino: {
-      place: string
-      region: string
-      counters: { value: string; label: string }[]
-      routesTitle: string
-      routes: { name: string; meta: string }[]
-    }
-    panel: {
-      title: string
-      period: string
-      chartLabel: string
-      topTitle: string
-      top: { name: string; value: string }[]
-      originTitle: string
-      origin: { name: string; value: string }[]
-    }
-    prestador: {
-      kind: string
-      name: string
-      place: string
-      fields: { label: string; value: string }[]
-      cta: string
-    }
-  }
-  footer: { tagline: string; demoLink: string; platformLink: string; rights: string }
-}
-
-const territory = {
-  place: 'Puerto Varas',
-  region: 'Región de Los Lagos, Chile',
+  footer: { tagline: string; appLink: string; platformLink: string; rights: string }
 }
 
 export const es: LandingCopy = {
@@ -87,159 +81,245 @@ export const es: LandingCopy = {
   altHref: '/en',
   altLabel: 'EN',
   nav: {
-    platform: 'Plataforma',
-    audience: 'Para quién',
-    cta: 'Contáctanos',
+    problem: 'El problema',
+    how: 'Cómo funciona',
+    products: 'Productos',
+    why: 'Por qué nosotros',
+    contact: 'Contacto',
+    platform: 'Ver la plataforma',
+    cta: 'Sumarme',
     skipToContent: 'Saltar al contenido',
   },
   hero: {
-    kicker: 'Plataforma de destino',
-    title: 'Publica tu territorio. Mide quién lo recorre.',
-    lead: 'Real Travel pone los lugares, rutas y prestadores de tu destino en una plataforma que el visitante usa mientras camina — y devuelve a tu gestión los datos de ese recorrido.',
-    ctaPrimary: 'Ver la plataforma',
-    ctaSecondary: 'Contáctanos',
-    ctaNote: 'Abierta y en línea: entra sin registrarte.',
-    mapDescription: `Mapa de ${territory.place} con los puntos de interés del destino y una ruta trazada entre ellos.`,
-    mapCaption: `${territory.place} — 84 puntos publicados`,
+    kicker: 'Turismo + tecnología',
+    title: 'La infraestructura digital de tu destino, ya construida.',
+    lead: 'Suma tu destino o tu servicio turístico a una plataforma que ya existe y gana visibilidad ante viajeros de toda Latinoamérica. Sin desarrollar nada desde cero.',
+    ctaPrimary: 'Quiero sumarme',
+    ctaSecondary: 'Ver productos',
+    chips: ['Destinos', 'Prestadores turísticos', 'Ferias y congresos'],
+    illustrationAlt:
+      'Mapa esquemático con puntos de interés conectados por una ruta, dentro de la interfaz de Real Travel.',
   },
-  evidence: {
-    label: 'Real Travel hoy',
-    items: [
-      { value: '12', label: 'países' },
-      { value: '60', label: 'destinos' },
-      { value: '254', label: 'rutas' },
-      { value: '14.000', label: 'puntos de interés' },
-    ],
-  },
-  layers: {
-    sectionKicker: 'La plataforma',
-    sectionTitle: 'Un territorio, tres capas',
-    sectionLead: 'No son etapas de un proyecto: funcionan a la vez. Lo que el visitante consulta alimenta lo que tu gestión mide, y lo que tu gestión publica es lo que el visitante encuentra.',
+  problem: {
+    kicker: 'El problema',
+    title: 'Existes en el mundo real, pero no en el digital.',
+    lead: 'Muchos destinos y prestadores turísticos tienen mucho para ofrecer y muy poca forma de mostrarlo. Y armar una solución propia es caro, lento y difícil de mantener.',
     items: [
       {
-        id: 'publica',
-        layer: 'Capa pública',
-        title: 'El visitante encuentra el territorio ordenado',
-        body: 'Entra desde el navegador, sin instalar nada. Ve lugares, rutas y prestadores organizados por lo que quiere hacer, no por categoría administrativa. Funciona en el teléfono, en la calle, con una mano.',
-        mock: 'destino',
+        title: 'Falta de visibilidad',
+        body: 'El viajero no te encuentra porque no estás donde busca: en lo digital.',
       },
       {
-        id: 'datos',
-        layer: 'Capa de datos',
-        title: 'Cada consulta deja evidencia',
-        body: 'Qué se busca, qué rutas se recorren, dónde se detiene el visitante y de dónde llega. Datos de uso para decidir dónde invertir y para justificar el presupuesto con algo más que intuición.',
-        mock: 'panel',
+        title: 'Sin infraestructura propia',
+        body: 'No tienes una web-app, ni el equipo para desarrollarla y sostenerla.',
       },
       {
-        id: 'prestador',
-        layer: 'Capa del prestador',
-        title: 'Cada prestador recibe su propia página',
-        body: 'La plataforma genera una página para cada hotel, restaurante y operador del territorio, con su ficha, ubicación y contacto. El prestador pequeño que nunca tuvo sitio web pasa a existir en línea.',
-        mock: 'prestador',
+        title: 'Costo y complejidad',
+        body: 'Hacer algo a medida desde cero implica tiempo, dinero y gestión técnica.',
       },
     ],
   },
-  audience: {
-    sectionKicker: 'Para quién',
-    sectionTitle: 'Tres formas de usar la misma plataforma',
-    items: [
+  how: {
+    kicker: 'Cómo funciona',
+    title: 'Tres pasos para estar online.',
+    lead: 'No construimos desde cero cada vez: te sumas a una infraestructura que ya funciona.',
+    steps: [
       {
-        role: 'Municipio y DMO',
-        pain: 'Promocionas el destino sin saber qué hace el visitante una vez que llega.',
-        gain: 'El territorio completo publicado y datos de uso para planificar y rendir cuentas.',
+        title: 'Te sumas',
+        body: 'Eliges el producto que se ajusta a tu destino o servicio y te integras a la plataforma Real Travel.',
       },
       {
-        role: 'Gremio y cámara de turismo',
-        pain: 'Tus socios pequeños no aparecen en ningún buscador.',
-        gain: 'Una página por socio, gestionada desde un solo lugar.',
+        title: 'Cargamos tu contenido',
+        body: 'Sumamos tus puntos de interés, rutas y prestadores. Tú pones el contenido; nosotros, la tecnología.',
       },
       {
-        role: 'Hotel y operador',
-        pain: 'El huésped sale del establecimiento y pierdes el rastro.',
-        gain: 'El entorno mostrado en tu marca y visibilidad de lo que hace fuera.',
+        title: 'Apareces ante viajeros',
+        body: 'Tu destino o servicio queda visible dentro de Real Travel, listo para que te descubran.',
       },
     ],
   },
-  steps: {
-    sectionKicker: 'Implementación',
-    sectionTitle: 'De la primera reunión al primer dato',
+  model: {
+    kicker: 'Nuestro modelo',
+    title: 'Pagas por lo que usas.',
+    lead: 'La infraestructura ya está construida. Tu presencia se arma con tu propio contenido y creces cuando quieras: sumas puntos, rutas o prestadores en cualquier momento. Sin gestión técnica de tu lado.',
+  },
+  products: {
+    kicker: 'Productos',
+    title: 'Una solución para cada caso.',
+    lead: 'Desde el destino completo hasta el prestador individual y el evento puntual.',
+    detailIncludes: 'Qué infraestructura incluye',
+    detailBenefits: 'Beneficios',
+    seeDetail: 'Ver qué incluye',
+    helpTitle: '¿No sabes cuál elegir?',
+    helpBody: 'Cuéntanos tu caso y te recomendamos el producto ideal.',
+    helpCta: 'Hablemos',
     items: [
       {
-        title: 'Levantamiento',
-        body: 'Digitalizamos lugares, rutas y prestadores del territorio junto a tu equipo.',
+        id: 'web-app-destino',
+        segment: 'Destinos',
+        name: 'Web App Destino',
+        audience: 'Municipios, oficinas de turismo, cámaras y regiones.',
+        pitch: 'Tu destino online y visible dentro de Real Travel, con puntos, rutas y prestadores.',
+        detailTitle: 'Web App Destino',
+        detailAudience: 'Para municipios, oficinas de turismo, cámaras y regiones.',
+        includes: [
+          'Web-app propia del destino, integrada a la app de Real Travel',
+          'Diseño y desarrollo completo (interfaz + funcionamiento interno)',
+          'Alojamiento en servidor',
+          'Puesta en marcha y configuración inicial',
+          'Carga profesional de puntos, rutas y prestadores',
+        ],
+        benefits: [
+          'Presencia digital inmediata, sin inversión en desarrollo propio',
+          'Visibilidad frente a viajeros reales dentro de la app',
+          'Contenido turístico organizado y navegable',
+          'Todo administrado por Real Travel: no gestionas tecnología',
+        ],
+        note: 'Crece cuando quieras: suma puntos, rutas y prestadores en cualquier momento.',
       },
       {
-        title: 'Publicación',
-        body: 'El destino queda en línea y cada prestador estrena su página.',
+        id: 'web-destino-personalizado',
+        segment: 'Destinos',
+        name: 'Web Destino Personalizado',
+        audience: 'Destinos que quieren identidad propia y más contenido.',
+        pitch: 'Una web-app a medida, diferenciada, con mayor capacidad de puntos, rutas y prestadores.',
+        detailTitle: 'Web Destino Personalizado',
+        detailAudience: 'Para destinos que quieren identidad propia y más volumen.',
+        includes: [
+          'Web-app personalizada, a medida del destino',
+          'Trabajo profesional de diseño y desarrollo',
+          'Alojamiento en servidor',
+          'Puesta en marcha más completa',
+          'Capacidad inicial, intermedia o amplia según el tamaño del destino',
+        ],
+        benefits: [
+          'Imagen y experiencia propias, diferenciadas',
+          'Mayor capacidad de contenido',
+          'Real Travel se encarga de la tecnología y la mantención',
+        ],
+        note: 'Crece cuando quieras: suma puntos, rutas y prestadores en cualquier momento.',
       },
       {
-        title: 'Medición',
-        body: 'Los datos de uso llegan desde el primer visitante, sin instalar nada.',
+        id: 'prestador-con-rutas',
+        segment: 'Prestadores',
+        name: 'Prestador con rutas',
+        audience: 'Operadores, guías y experiencias con recorridos.',
+        pitch: 'Perfil propio con puntos, rutas y cartelera de actividades dentro de la plataforma.',
+        detailTitle: 'Prestador turístico — con rutas',
+        detailAudience: 'Para operadores, guías y experiencias con recorridos.',
+        includes: [
+          'Perfil digital propio dentro de la web-app de Real Travel',
+          'Puntos de interés asociados al prestador',
+          'Rutas y recorridos propios',
+          'Cartelera de actividades',
+          'Alojamiento y soporte',
+        ],
+        benefits: [
+          'Visibilidad ante viajeros dentro de la plataforma',
+          'Tus recorridos, mostrados de forma atractiva y navegable',
+          'Cartelera siempre actualizable',
+          'Sin desarrollo ni gestión técnica de por medio',
+        ],
+      },
+      {
+        id: 'prestador-sin-rutas',
+        segment: 'Prestadores',
+        name: 'Prestador sin rutas',
+        audience: 'Alojamientos, restaurantes, comercios y servicios.',
+        pitch: 'Presencia digital simple con cartelera de actividades, sin recorridos.',
+        detailTitle: 'Prestador turístico — sin rutas',
+        detailAudience: 'Para alojamientos, restaurantes, comercios y servicios.',
+        includes: [
+          'Perfil digital propio dentro de la web-app de Real Travel',
+          'Cartelera de actividades',
+          'Alojamiento y soporte',
+        ],
+        benefits: [
+          'La forma más simple de tener presencia digital en la plataforma',
+          'Comunicación siempre al día a través de la cartelera',
+          'Sin desarrollo ni gestión técnica de por medio',
+        ],
+        note: 'Ideal como puerta de entrada para prestadores que luego quieran sumar rutas.',
+      },
+      {
+        id: 'mapa-ferias',
+        segment: 'Eventos',
+        name: 'Mapa Interactivo Ferias/Congresos',
+        audience: 'Organizadores de ferias, congresos y eventos.',
+        pitch: 'Un mapa interactivo del evento con informe de datos, listo para un evento acotado.',
+        detailTitle: 'Mapa interactivo para ferias y congresos',
+        detailAudience: 'Para organizadores de ferias, congresos y eventos.',
+        includes: [
+          'Mapa interactivo del evento (diseño y desarrollo completos)',
+          'Alojamiento durante los días del evento',
+          'Carga de puntos de interés y rutas',
+          'Informe de datos del evento',
+        ],
+        benefits: [
+          'Mejor experiencia para el asistente: se ubica y encuentra todo rápido',
+          'Herramienta lista para un evento acotado, sin infraestructura permanente',
+          'Datos concretos para medir y mejorar próximas ediciones',
+        ],
+      },
+    ],
+  },
+  why: {
+    kicker: 'Por qué Real Travel',
+    title: 'Tú pones el turismo. Nosotros, la tecnología.',
+    lead: 'Una plataforma pensada para que destinos y prestadores estén online sin complicaciones.',
+    items: [
+      {
+        title: 'Integrado a la app',
+        body: 'Tu presencia vive dentro de Real Travel, donde el viajero ya está buscando.',
+      },
+      {
+        title: 'Rápido de activar',
+        body: 'La infraestructura ya existe: te sumas y cargamos tu contenido.',
+      },
+      {
+        title: 'Sin gestión técnica',
+        body: 'Nos ocupamos del desarrollo, el alojamiento y la mantención.',
+      },
+      {
+        title: 'Escalable',
+        body: 'Sumas puntos, rutas y prestadores a medida que creces.',
       },
     ],
   },
   contact: {
-    kicker: 'Contacto',
-    title: 'Conversemos sobre tu destino',
-    lead: 'Cuéntanos qué territorio gestionas y te mostramos cómo se vería publicado.',
+    kicker: 'Súmate',
+    title: 'Cuéntanos tu caso.',
+    lead: 'Déjanos tus datos y te contactamos para armar la mejor solución para tu destino, servicio o evento.',
+    bullets: [
+      'Te recomendamos el producto ideal',
+      'Te explicamos cómo se carga tu contenido',
+      'Coordinamos la puesta en marcha',
+    ],
     fields: {
-      name: 'Nombre',
-      org: 'Institución',
-      email: 'Correo',
-      message: 'Qué territorio gestionas',
+      name: 'Nombre y apellido',
+      email: 'Email',
+      subject: '¿Qué quieres digitalizar?',
+      message: 'Cuéntanos brevemente',
     },
-    submit: 'Enviar mensaje',
+    placeholders: {
+      name: 'Tu nombre',
+      email: 'tu@email.com',
+      message: 'Tu destino, servicio o evento...',
+    },
+    subjectOptions: [
+      'Un destino',
+      'Un servicio turístico',
+      'Una feria o congreso',
+      'Todavía no lo sé',
+    ],
+    submit: 'Enviar',
+    reply: 'Te respondemos a la brevedad',
     fallbackLead: 'O escríbenos directamente a',
     fallbackEmail: 'hola@realtravelapp.com',
   },
-  mocks: {
-    destino: {
-      place: territory.place,
-      region: territory.region,
-      counters: [
-        { value: '84', label: 'lugares' },
-        { value: '6', label: 'rutas' },
-        { value: '31', label: 'prestadores' },
-      ],
-      routesTitle: 'Rutas del destino',
-      routes: [
-        { name: 'Borde del lago', meta: '4,2 km · 2 h' },
-        { name: 'Arquitectura alemana', meta: '2,8 km · 1 h 30' },
-        { name: 'Cocina del sur', meta: '9 paradas' },
-      ],
-    },
-    panel: {
-      title: 'Uso del destino',
-      period: 'Últimos 30 días',
-      chartLabel: 'Consultas por día',
-      topTitle: 'Rutas más recorridas',
-      top: [
-        { name: 'Borde del lago', value: '1.284' },
-        { name: 'Cocina del sur', value: '870' },
-        { name: 'Arquitectura alemana', value: '612' },
-      ],
-      originTitle: 'Origen del visitante',
-      origin: [
-        { name: 'Santiago', value: '38%' },
-        { name: 'Argentina', value: '21%' },
-        { name: 'Brasil', value: '12%' },
-      ],
-    },
-    prestador: {
-      kind: 'Restaurante',
-      name: 'Cocinería Los Colonos',
-      place: territory.place,
-      fields: [
-        { label: 'Horario', value: 'Mar a dom · 12:00–22:00' },
-        { label: 'Ubicación', value: 'Del Salvador 210' },
-        { label: 'En la ruta', value: 'Cocina del sur' },
-      ],
-      cta: 'Cómo llegar',
-    },
-  },
   footer: {
-    tagline: 'Plataforma de destino',
-    demoLink: 'Ver la app del viajero',
+    tagline: 'Tecnología aplicada al turismo · Latinoamérica y Centroamérica',
+    appLink: 'Ver la app del viajero',
     platformLink: 'Plataforma en vivo',
     rights: 'Real Travel. Todos los derechos reservados.',
   },
@@ -250,159 +330,245 @@ export const en: LandingCopy = {
   altHref: '/',
   altLabel: 'ES',
   nav: {
-    platform: 'Platform',
-    audience: 'Who it serves',
-    cta: 'Contact us',
+    problem: 'The problem',
+    how: 'How it works',
+    products: 'Products',
+    why: 'Why us',
+    contact: 'Contact',
+    platform: 'See the platform',
+    cta: 'Join us',
     skipToContent: 'Skip to content',
   },
   hero: {
-    kicker: 'Destination platform',
-    title: 'Publish your territory. Measure who walks it.',
-    lead: 'Real Travel puts your destination’s places, routes and providers on a platform visitors use while walking — and returns the data from that journey to your team.',
-    ctaPrimary: 'See the platform',
-    ctaSecondary: 'Contact us',
-    ctaNote: 'Open and online: no sign-up needed.',
-    mapDescription: `Map of ${territory.place} showing the destination’s points of interest and a route drawn between them.`,
-    mapCaption: `${territory.place} — 84 points published`,
+    kicker: 'Tourism + technology',
+    title: 'Your destination’s digital infrastructure, already built.',
+    lead: 'Add your destination or tourism service to a platform that already exists and reach travellers across Latin America. Nothing to build from scratch.',
+    ctaPrimary: 'I want to join',
+    ctaSecondary: 'See products',
+    chips: ['Destinations', 'Tourism providers', 'Trade shows and conferences'],
+    illustrationAlt:
+      'Schematic map with points of interest connected by a route, inside the Real Travel interface.',
   },
-  evidence: {
-    label: 'Real Travel today',
-    items: [
-      { value: '12', label: 'countries' },
-      { value: '60', label: 'destinations' },
-      { value: '254', label: 'routes' },
-      { value: '14,000', label: 'points of interest' },
-    ],
-  },
-  layers: {
-    sectionKicker: 'The platform',
-    sectionTitle: 'One territory, three layers',
-    sectionLead: 'These are not project stages — they run at once. What visitors look up feeds what your team measures, and what your team publishes is what visitors find.',
+  problem: {
+    kicker: 'The problem',
+    title: 'You exist in the real world, but not in the digital one.',
+    lead: 'Many destinations and tourism providers have plenty to offer and almost no way to show it. Building your own solution is expensive, slow and hard to maintain.',
     items: [
       {
-        id: 'publica',
-        layer: 'Public layer',
-        title: 'Visitors find the territory in order',
-        body: 'They open it in a browser, nothing to install. Places, routes and providers are organised by what people want to do, not by administrative category. It works on a phone, on the street, one-handed.',
-        mock: 'destino',
+        title: 'No visibility',
+        body: 'Travellers don’t find you because you’re not where they look: online.',
       },
       {
-        id: 'datos',
-        layer: 'Data layer',
-        title: 'Every lookup leaves evidence',
-        body: 'What gets searched, which routes are walked, where visitors stop and where they come from. Usage data to decide where to invest and to back a budget with more than intuition.',
-        mock: 'panel',
+        title: 'No infrastructure of your own',
+        body: 'You have no web app, and no team to build and sustain one.',
       },
       {
-        id: 'prestador',
-        layer: 'Provider layer',
-        title: 'Every provider gets its own page',
-        body: 'The platform generates a page for each hotel, restaurant and operator in the territory, with its details, location and contact. The small provider that never had a website goes online.',
-        mock: 'prestador',
+        title: 'Cost and complexity',
+        body: 'Building something custom from zero takes time, money and technical management.',
       },
     ],
   },
-  audience: {
-    sectionKicker: 'Who it serves',
-    sectionTitle: 'Three ways to use the same platform',
-    items: [
+  how: {
+    kicker: 'How it works',
+    title: 'Three steps to being online.',
+    lead: 'We don’t rebuild from scratch every time: you join infrastructure that already works.',
+    steps: [
       {
-        role: 'Municipality and DMO',
-        pain: 'You promote the destination without knowing what visitors do once they arrive.',
-        gain: 'The whole territory published, and usage data to plan and account for it.',
+        title: 'You join',
+        body: 'Pick the product that fits your destination or service and plug into the Real Travel platform.',
       },
       {
-        role: 'Trade association',
-        pain: 'Your smaller members show up in no search result.',
-        gain: 'One page per member, managed from a single place.',
+        title: 'We load your content',
+        body: 'We add your points of interest, routes and providers. You bring the content; we bring the technology.',
       },
       {
-        role: 'Hotel and operator',
-        pain: 'Guests leave the building and you lose track of them.',
-        gain: 'The surroundings shown under your brand, and visibility of what they do outside.',
+        title: 'Travellers find you',
+        body: 'Your destination or service goes live inside Real Travel, ready to be discovered.',
       },
     ],
   },
-  steps: {
-    sectionKicker: 'Rollout',
-    sectionTitle: 'From first meeting to first data point',
+  model: {
+    kicker: 'Our model',
+    title: 'You pay for what you use.',
+    lead: 'The infrastructure is already built. Your presence is made of your own content, and you grow whenever you want: add points, routes or providers at any time. No technical management on your side.',
+  },
+  products: {
+    kicker: 'Products',
+    title: 'One solution for each case.',
+    lead: 'From a whole destination to a single provider or a one-off event.',
+    detailIncludes: 'What the infrastructure includes',
+    detailBenefits: 'Benefits',
+    seeDetail: 'See what’s included',
+    helpTitle: 'Not sure which one?',
+    helpBody: 'Tell us your case and we’ll recommend the right product.',
+    helpCta: 'Let’s talk',
     items: [
       {
-        title: 'Survey',
-        body: 'We digitise the territory’s places, routes and providers alongside your team.',
+        id: 'web-app-destino',
+        segment: 'Destinations',
+        name: 'Destination Web App',
+        audience: 'Municipalities, tourism offices, chambers and regions.',
+        pitch: 'Your destination online and visible inside Real Travel, with points, routes and providers.',
+        detailTitle: 'Destination Web App',
+        detailAudience: 'For municipalities, tourism offices, chambers and regions.',
+        includes: [
+          'A web app of your own, integrated into the Real Travel app',
+          'Full design and development (interface and inner workings)',
+          'Server hosting',
+          'Launch and initial setup',
+          'Professional loading of points, routes and providers',
+        ],
+        benefits: [
+          'Immediate digital presence, with no development investment',
+          'Visibility to real travellers inside the app',
+          'Tourism content organised and easy to browse',
+          'All run by Real Travel: you don’t manage technology',
+        ],
+        note: 'Grow whenever you want: add points, routes and providers at any time.',
       },
       {
-        title: 'Launch',
-        body: 'The destination goes live and every provider gets its page.',
+        id: 'web-destino-personalizado',
+        segment: 'Destinations',
+        name: 'Custom Destination Web',
+        audience: 'Destinations that want their own identity and more content.',
+        pitch: 'A tailor-made, distinct web app with greater capacity for points, routes and providers.',
+        detailTitle: 'Custom Destination Web',
+        detailAudience: 'For destinations that want their own identity and more volume.',
+        includes: [
+          'A web app customised to the destination',
+          'Professional design and development work',
+          'Server hosting',
+          'A more complete launch',
+          'Starter, intermediate or wide capacity depending on the size of the destination',
+        ],
+        benefits: [
+          'Your own look and experience, clearly distinct',
+          'Greater content capacity',
+          'Real Travel handles the technology and the upkeep',
+        ],
+        note: 'Grow whenever you want: add points, routes and providers at any time.',
       },
       {
-        title: 'Measurement',
-        body: 'Usage data arrives with the first visitor, nothing to install.',
+        id: 'prestador-con-rutas',
+        segment: 'Providers',
+        name: 'Provider with routes',
+        audience: 'Operators, guides and experiences with itineraries.',
+        pitch: 'Your own profile with points, routes and an activity board inside the platform.',
+        detailTitle: 'Tourism provider — with routes',
+        detailAudience: 'For operators, guides and experiences with itineraries.',
+        includes: [
+          'Your own digital profile inside the Real Travel web app',
+          'Points of interest linked to the provider',
+          'Your own routes and itineraries',
+          'Activity board',
+          'Hosting and support',
+        ],
+        benefits: [
+          'Visibility to travellers inside the platform',
+          'Your itineraries shown in an appealing, browsable way',
+          'An activity board you can always update',
+          'No development or technical management involved',
+        ],
+      },
+      {
+        id: 'prestador-sin-rutas',
+        segment: 'Providers',
+        name: 'Provider without routes',
+        audience: 'Hotels, restaurants, shops and services.',
+        pitch: 'Simple digital presence with an activity board, without itineraries.',
+        detailTitle: 'Tourism provider — without routes',
+        detailAudience: 'For hotels, restaurants, shops and services.',
+        includes: [
+          'Your own digital profile inside the Real Travel web app',
+          'Activity board',
+          'Hosting and support',
+        ],
+        benefits: [
+          'The simplest way to have a digital presence on the platform',
+          'Always-current communication through the activity board',
+          'No development or technical management involved',
+        ],
+        note: 'A good entry point for providers that may add routes later.',
+      },
+      {
+        id: 'mapa-ferias',
+        segment: 'Events',
+        name: 'Interactive Map for Trade Shows',
+        audience: 'Organisers of trade shows, conferences and events.',
+        pitch: 'An interactive event map with a data report, ready for a time-bound event.',
+        detailTitle: 'Interactive map for trade shows and conferences',
+        detailAudience: 'For organisers of trade shows, conferences and events.',
+        includes: [
+          'Interactive event map (full design and development)',
+          'Hosting for the days of the event',
+          'Loading of points of interest and routes',
+          'Event data report',
+        ],
+        benefits: [
+          'A better experience for attendees: they find their way fast',
+          'A tool ready for a time-bound event, with no permanent infrastructure',
+          'Concrete data to measure and improve future editions',
+        ],
+      },
+    ],
+  },
+  why: {
+    kicker: 'Why Real Travel',
+    title: 'You bring the tourism. We bring the technology.',
+    lead: 'A platform built so destinations and providers can be online without complications.',
+    items: [
+      {
+        title: 'Built into the app',
+        body: 'Your presence lives inside Real Travel, where travellers are already looking.',
+      },
+      {
+        title: 'Quick to activate',
+        body: 'The infrastructure already exists: you join and we load your content.',
+      },
+      {
+        title: 'No technical management',
+        body: 'We handle development, hosting and upkeep.',
+      },
+      {
+        title: 'Scalable',
+        body: 'Add points, routes and providers as you grow.',
       },
     ],
   },
   contact: {
-    kicker: 'Contact',
-    title: 'Let’s talk about your destination',
-    lead: 'Tell us which territory you manage and we’ll show you how it would look published.',
+    kicker: 'Join us',
+    title: 'Tell us your case.',
+    lead: 'Leave us your details and we’ll get in touch to build the best solution for your destination, service or event.',
+    bullets: [
+      'We recommend the right product',
+      'We explain how your content gets loaded',
+      'We coordinate the launch',
+    ],
     fields: {
-      name: 'Name',
-      org: 'Organisation',
+      name: 'Full name',
       email: 'Email',
-      message: 'Which territory you manage',
+      subject: 'What do you want to digitise?',
+      message: 'Tell us briefly',
     },
-    submit: 'Send message',
+    placeholders: {
+      name: 'Your name',
+      email: 'you@email.com',
+      message: 'Your destination, service or event...',
+    },
+    subjectOptions: [
+      'A destination',
+      'A tourism service',
+      'A trade show or conference',
+      'I’m not sure yet',
+    ],
+    submit: 'Send',
+    reply: 'We reply shortly',
     fallbackLead: 'Or write to us directly at',
     fallbackEmail: 'hola@realtravelapp.com',
   },
-  mocks: {
-    destino: {
-      place: territory.place,
-      region: 'Los Lagos Region, Chile',
-      counters: [
-        { value: '84', label: 'places' },
-        { value: '6', label: 'routes' },
-        { value: '31', label: 'providers' },
-      ],
-      routesTitle: 'Routes in this destination',
-      routes: [
-        { name: 'Lake shore', meta: '4.2 km · 2 h' },
-        { name: 'German architecture', meta: '2.8 km · 1 h 30' },
-        { name: 'Southern kitchen', meta: '9 stops' },
-      ],
-    },
-    panel: {
-      title: 'Destination usage',
-      period: 'Last 30 days',
-      chartLabel: 'Lookups per day',
-      topTitle: 'Most walked routes',
-      top: [
-        { name: 'Lake shore', value: '1,284' },
-        { name: 'Southern kitchen', value: '870' },
-        { name: 'German architecture', value: '612' },
-      ],
-      originTitle: 'Visitor origin',
-      origin: [
-        { name: 'Santiago', value: '38%' },
-        { name: 'Argentina', value: '21%' },
-        { name: 'Brazil', value: '12%' },
-      ],
-    },
-    prestador: {
-      kind: 'Restaurant',
-      name: 'Cocinería Los Colonos',
-      place: territory.place,
-      fields: [
-        { label: 'Hours', value: 'Tue–Sun · 12:00–22:00' },
-        { label: 'Address', value: 'Del Salvador 210' },
-        { label: 'On the route', value: 'Southern kitchen' },
-      ],
-      cta: 'Get directions',
-    },
-  },
   footer: {
-    tagline: 'Destination platform',
-    demoLink: 'See the traveller app',
+    tagline: 'Technology applied to tourism · Latin America and Central America',
+    appLink: 'See the traveller app',
     platformLink: 'Live platform',
     rights: 'Real Travel. All rights reserved.',
   },

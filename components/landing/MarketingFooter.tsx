@@ -1,25 +1,21 @@
 import Link from 'next/link'
 import type { LandingCopy } from '@/lib/landing-copy'
+import { CONTAINER } from './primitives'
 
 export function MarketingFooter({ copy }: { copy: LandingCopy }) {
   return (
-    <footer className="mx-auto max-w-[1180px] px-6 pb-12">
-      <div
-        className="pt-8 flex flex-wrap items-baseline gap-x-8 gap-y-4"
-        style={{ borderTop: '1px solid var(--color-border)' }}
-      >
+    <footer style={{ background: 'var(--rt-ink)' }}>
+      <div className={`${CONTAINER} py-10 flex flex-wrap items-center gap-x-8 gap-y-4`}>
         <p
-          className="font-bold"
-          style={{
-            fontFamily: 'var(--font-family-display)',
-            fontSize: '16px',
-            letterSpacing: '-0.02em',
-          }}
+          className="flex items-center gap-2 font-semibold"
+          style={{ fontSize: '16px', color: 'var(--rt-white-text)', letterSpacing: '-0.02em' }}
         >
+          <span
+            className="block w-2.5 h-2.5 rounded-full"
+            style={{ background: 'var(--rt-red-600)' }}
+            aria-hidden="true"
+          />
           Real Travel
-          <span className="ml-2 font-normal text-[12px]" style={{ color: 'var(--color-text-muted)' }}>
-            {copy.footer.tagline}
-          </span>
         </p>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-[13px]">
@@ -27,19 +23,28 @@ export function MarketingFooter({ copy }: { copy: LandingCopy }) {
             href="https://webapp.realtravelapp.com/"
             target="_blank"
             rel="noreferrer"
-            className="hover:underline underline-offset-4"
+            style={{ color: 'rgba(242,243,247,0.75)' }}
           >
             {copy.footer.platformLink} ↗
           </a>
-          <Link href="/explorar" className="hover:underline underline-offset-4">
-            {copy.footer.demoLink}
+          <Link href="/explorar" style={{ color: 'rgba(242,243,247,0.75)' }}>
+            {copy.footer.appLink}
           </Link>
-          <Link href={copy.altHref} className="hover:underline underline-offset-4">
+          <Link href={copy.altHref} style={{ color: 'rgba(242,243,247,0.75)' }}>
             {copy.altLabel}
           </Link>
         </nav>
 
-        <p className="ml-auto text-[12px]" style={{ color: 'var(--color-text-muted)' }}>
+        <p className="ml-auto text-[12px]" style={{ color: 'rgba(242,243,247,0.55)' }}>
+          {copy.footer.tagline}
+        </p>
+      </div>
+
+      <div className={CONTAINER}>
+        <p
+          className="py-5 text-[12px]"
+          style={{ borderTop: '1px solid rgba(242,243,247,0.12)', color: 'rgba(242,243,247,0.45)' }}
+        >
           © 2026 {copy.footer.rights}
         </p>
       </div>

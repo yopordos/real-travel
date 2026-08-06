@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Fraunces, DM_Sans } from 'next/font/google'
+import { Fraunces, DM_Sans, Poppins } from 'next/font/google'
 import './globals.css'
 
 // Serif editorial para titulares — registro revista, no app genérica
@@ -13,6 +13,14 @@ const fraunces = Fraunces({
 const dmSans = DM_Sans({
   subsets: ['latin'],
   variable: '--font-body',
+  display: 'swap',
+})
+
+// Tipografía exclusiva del design system de Real Travel — la usa la landing
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
   display: 'swap',
 })
 
@@ -43,8 +51,8 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${fraunces.variable} ${dmSans.variable}`} suppressHydrationWarning>
-      <body className={`${fraunces.variable} ${dmSans.variable}`}>{children}</body>
+    <html lang="es" className={`${fraunces.variable} ${dmSans.variable} ${poppins.variable}`} suppressHydrationWarning>
+      <body className={`${fraunces.variable} ${dmSans.variable} ${poppins.variable}`}>{children}</body>
     </html>
   )
 }

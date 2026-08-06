@@ -1,74 +1,52 @@
 import type { LandingCopy } from '@/lib/landing-copy'
-import { HeroMapFrame } from './HeroMapFrame'
-
-const WEBAPP = 'https://webapp.realtravelapp.com/'
+import { HeroIllustration } from './HeroIllustration'
+import { CONTAINER, Kicker, PrimaryButton, SecondaryButton } from './primitives'
 
 export function Hero({ copy }: { copy: LandingCopy }) {
-  const [first, ...rest] = copy.hero.title.split('. ')
-
   return (
-    <section className="pt-14 pb-16 md:pt-24 md:pb-24 overflow-hidden">
-      <div className="mx-auto max-w-[1180px] px-6 grid gap-10 lg:gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:items-center">
-
+    <section className="pt-12 pb-16 md:pt-20 md:pb-24">
+      <div className={`${CONTAINER} grid gap-12 lg:gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:items-center`}>
         <div>
-          <p
-            className="text-[11px] font-semibold uppercase mb-6"
-            style={{ color: 'var(--color-text-muted)', letterSpacing: '0.14em' }}
-          >
-            {copy.hero.kicker}
-          </p>
+          <Kicker>{copy.hero.kicker}</Kicker>
 
           <h1
-            className="font-bold"
-            style={{
-              fontSize: 'clamp(38px, 5.6vw, 66px)',
-              lineHeight: 1.02,
-              letterSpacing: '-0.032em',
-              textWrap: 'balance',
-            }}
+            className="mt-5 font-bold"
+            style={{ fontSize: 'clamp(34px, 4.6vw, 52px)', lineHeight: 1.08, textWrap: 'balance' }}
           >
-            {first}.{' '}
-            <span style={{ color: 'var(--color-crimson)' }}>{rest.join('. ')}</span>
+            {copy.hero.title}
           </h1>
 
           <p
-            className="mt-6 max-w-[46ch]"
-            style={{ color: 'var(--color-text-muted)', fontSize: '17px', lineHeight: 1.6 }}
+            className="mt-6 max-w-[52ch]"
+            style={{ fontSize: '17px', lineHeight: 1.6, color: 'var(--rt-slate-60)' }}
           >
             {copy.hero.lead}
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href={WEBAPP}
-              target="_blank"
-              rel="noreferrer"
-              className="px-6 py-3.5 text-[14px] font-semibold rounded-full"
-              style={{ background: 'var(--color-crimson)', color: 'white' }}
-            >
-              {copy.hero.ctaPrimary} ↗
-            </a>
-            <a
-              href="#contacto"
-              className="px-6 py-3.5 text-[14px] font-semibold rounded-full"
-              style={{ border: '1px solid var(--color-border)' }}
-            >
-              {copy.hero.ctaSecondary}
-            </a>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <PrimaryButton href="#contacto">{copy.hero.ctaPrimary}</PrimaryButton>
+            <SecondaryButton href="#productos">{copy.hero.ctaSecondary}</SecondaryButton>
           </div>
 
-          <p className="mt-4 text-[13px]" style={{ color: 'var(--color-text-muted)' }}>
-            {copy.hero.ctaNote}
-          </p>
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+            {copy.hero.chips.map(chip => (
+              <li
+                key={chip}
+                className="flex items-center gap-2 text-[13px] font-medium"
+                style={{ color: 'var(--rt-slate-60)' }}
+              >
+                <span
+                  className="block w-2 h-2 rounded-full"
+                  style={{ background: 'var(--rt-red-700)' }}
+                  aria-hidden="true"
+                />
+                {chip}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* El mapa sale del contenedor hacia el borde derecho de la ventana */}
-        <div
-          className="relative h-[300px] md:h-[380px] lg:h-[520px] lg:mr-[calc(50%-50vw)] overflow-hidden"
-          style={{ borderRadius: '10px' }}
-        >
-          <HeroMapFrame description={copy.hero.mapDescription} caption={copy.hero.mapCaption} />
-        </div>
+        <HeroIllustration alt={copy.hero.illustrationAlt} />
       </div>
     </section>
   )

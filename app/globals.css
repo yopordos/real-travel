@@ -182,3 +182,64 @@
   from { opacity: 0; }
   to { opacity: 0.85; }
 }
+
+/* ── Design System oficial de Real Travel ───────────────────────────────────
+   Fuente: Dropbox/WIP/01. Real Travel/WebApp/01. Design System/tokens/.
+   Los usa la landing; la app del viajero conserva sus tokens editoriales. */
+:root {
+  --rt-red-900: #7d0624;
+  --rt-red-800: #95082b;
+  --rt-red-700: #b50933; /* rojo de marca */
+  --rt-red-600: #d30d2b;
+  --rt-red-100: #fbe2e7;
+  --rt-red-50: #fdf1f3;
+
+  --rt-amber-500: #f2a65a;
+  --rt-amber-100: #fcecd9;
+
+  --rt-ink: #0c0c13;
+  --rt-slate: #333652;
+  --rt-slate-60: #6c6f86;
+  --rt-slate-40: #9a9cae;
+  --rt-border: #dcdcdc;
+  --rt-border-soft: #e8e9e4;
+  --rt-bg: #f2f3ef;
+  --rt-surface: #ffffff;
+  --rt-sunken: #ecede7;
+  --rt-white-text: #f2f3f7;
+
+  --rt-radius-xs: 6px;
+  --rt-radius-sm: 8px;
+  --rt-radius: 12px; /* firma */
+  --rt-radius-lg: 16px;
+  --rt-radius-xl: 24px;
+  --rt-radius-pill: 999px;
+
+  --rt-shadow-xs: 0 1px 2px rgba(12, 12, 19, 0.06);
+  --rt-shadow-sm: 0 2px 8px rgba(12, 12, 19, 0.08);
+  --rt-shadow-card: 0 6px 20px rgba(12, 12, 19, 0.1);
+  --rt-shadow-brand: 0 8px 22px rgba(181, 9, 51, 0.28);
+
+  --rt-font: var(--font-poppins), 'Poppins', system-ui, sans-serif;
+}
+
+/* La landing vive entera en el DS: Poppins y fondo cálido propios */
+.rt-scope {
+  font-family: var(--rt-font);
+  color: var(--rt-slate);
+  background: var(--rt-bg);
+}
+
+.rt-scope h1,
+.rt-scope h2,
+.rt-scope h3,
+.rt-scope h4 {
+  font-family: var(--rt-font);
+  color: var(--rt-ink);
+  letter-spacing: -0.02em;
+}
+
+.rt-scope :focus-visible {
+  outline: 2px solid var(--rt-red-600);
+  outline-offset: 3px;
+}
