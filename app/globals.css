@@ -282,8 +282,16 @@
 }
 
 @keyframes rt-parallax-slow {
-  from { transform: translate3d(0, -3.5%, 0) scale(1.06); }
-  to { transform: translate3d(0, 3.5%, 0) scale(1.06); }
+  from { transform: translate3d(0, -8%, 0) scale(1.18); }
+  to { transform: translate3d(0, 8%, 0) scale(1.18); }
+}
+
+/* Fondo del hero: las fotos de origen son de 938px de ancho, así que a pantalla
+   completa no dan detalle. Se tratan como plano lejano — desenfoque suave — y
+   el detalle nítido lo aporta la captura de la plataforma, que va delante. */
+.rt-backdrop {
+  filter: blur(5px) saturate(1.08);
+  transform: scale(1.18);
 }
 
 /* Fondo de la landing: un degradado apenas perceptible en vez de un plano */

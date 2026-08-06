@@ -19,7 +19,7 @@ export function Hero({ copy }: { copy: LandingCopy }) {
           fill
           priority
           sizes="100vw"
-          className="object-cover rt-parallax-slow"
+          className="object-cover rt-backdrop rt-parallax-slow"
         />
         <div
           className="absolute inset-0"
