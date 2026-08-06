@@ -77,8 +77,8 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
               <div className="px-6 pb-6">
                 <div className="pt-6 flex flex-col gap-6" style={{ borderTop: '1px solid var(--rt-border-soft)' }}>
                   {[
-                    { title: copy.detailIncludes, rows: product.includes },
-                    { title: copy.detailBenefits, rows: product.benefits },
+                    { title: product.includesTitle ?? copy.detailIncludes, rows: product.includes },
+                    { title: product.benefitsTitle ?? copy.detailBenefits, rows: product.benefits },
                   ].map(block => (
                     <div key={block.title}>
                       <h4
