@@ -44,13 +44,15 @@ export interface LandingCopy {
     chips: string[]
     illustrationAlt: string
   }
-  showcase: {
+  mapExplorer: {
     kicker: string
     title: string
     lead: string
-    items: { src: string; label: string; alt: string }[]
+    hint: string
+    points: { id: string; label: string; blurb: string; src: string; alt: string }[]
     platformCaption: string
     platformAlt: string
+    platformCta: string
   }
   problem: { kicker: string; title: string; lead: string; items: Feature[] }
   how: { kicker: string; title: string; lead: string; steps: Feature[] }
@@ -65,6 +67,7 @@ export interface LandingCopy {
     helpCta: string
     detailIncludes: string
     detailBenefits: string
+    interested: string
   }
   why: { kicker: string; title: string; lead: string; items: Feature[] }
   contact: {
@@ -74,7 +77,7 @@ export interface LandingCopy {
     bullets: string[]
     fields: { name: string; email: string; subject: string; message: string }
     placeholders: { name: string; email: string; message: string }
-    subjectOptions: string[]
+    subjectUnsure: string
     submit: string
     reply: string
     fallbackLead: string
@@ -107,18 +110,44 @@ export const es: LandingCopy = {
     illustrationAlt:
       'Mapa esquemático con puntos de interés conectados por una ruta, dentro de la interfaz de Real Travel.',
   },
-  showcase: {
-    kicker: 'El contenido',
-    title: 'Lo que el viajero encuentra dentro.',
-    lead: 'Lugares, rutas y prestadores con fotografía, contexto y ubicación. El mismo material que hoy recorren viajeros en doce países.',
-    items: [
-      { src: '/img/foto-5.jpeg', label: 'Rutas', alt: 'Ciclista recorriendo un camino de ripio junto a un río glaciar rodeado de montañas nevadas.' },
-      { src: '/img/foto-6.jpeg', label: 'Ciudades', alt: 'Plaza de una ciudad al atardecer con un edificio colonial iluminado.' },
-      { src: '/img/foto-1.jpeg', label: 'Naturaleza', alt: 'Pasarela de madera sobre un lago turquesa entre montañas boscosas.' },
-      { src: '/img/foto-3.jpeg', label: 'Patrimonio', alt: 'Palacio histórico de fachada clásica visto desde la calle.' },
+  mapExplorer: {
+    kicker: 'El mapa',
+    title: 'Cada lugar es un punto en el mapa.',
+    lead: 'Así se ordena un territorio dentro de Real Travel: puntos de interés con su ficha, rutas que los conectan y prestadores alrededor.',
+    hint: 'Toca un punto del mapa',
+    points: [
+      {
+        id: 'naturaleza',
+        label: 'Naturaleza',
+        blurb: 'Miradores, senderos y paisajes, con su ubicación exacta y cómo llegar.',
+        src: '/img/foto-1.jpeg',
+        alt: 'Pasarela de madera sobre un lago turquesa entre montañas boscosas.',
+      },
+      {
+        id: 'rutas',
+        label: 'Rutas',
+        blurb: 'Recorridos que ordenan varios puntos en una secuencia: qué ver primero y qué sigue.',
+        src: '/img/foto-5.jpeg',
+        alt: 'Ciclista recorriendo un camino de ripio junto a un río glaciar rodeado de montañas nevadas.',
+      },
+      {
+        id: 'ciudades',
+        label: 'Ciudades',
+        blurb: 'El casco urbano con sus plazas, comercios y prestadores adheridos al destino.',
+        src: '/img/foto-6.jpeg',
+        alt: 'Plaza de una ciudad al atardecer con un edificio colonial iluminado.',
+      },
+      {
+        id: 'patrimonio',
+        label: 'Patrimonio',
+        blurb: 'Edificios e hitos históricos con el contexto que un mapa común no cuenta.',
+        src: '/img/foto-3.jpeg',
+        alt: 'Palacio histórico de fachada clásica visto desde la calle.',
+      },
     ],
     platformCaption: 'La plataforma, hoy',
     platformAlt: 'Vista Explorar de la plataforma de Real Travel: buscador, destino recomendado y listado de lugares.',
+    platformCta: 'Abrir la plataforma',
   },
   problem: {
     kicker: 'El problema',
@@ -169,6 +198,7 @@ export const es: LandingCopy = {
     lead: 'Desde el destino completo hasta el prestador individual y el evento puntual.',
     detailIncludes: 'Qué infraestructura incluye',
     detailBenefits: 'Beneficios',
+    interested: '¡Me interesa!',
     helpTitle: '¿No sabes cuál elegir?',
     helpBody: 'Cuéntanos tu caso y te recomendamos el producto ideal.',
     helpCta: 'Hablemos',
@@ -325,12 +355,7 @@ export const es: LandingCopy = {
       email: 'tu@email.com',
       message: 'Tu destino, servicio o evento...',
     },
-    subjectOptions: [
-      'Un destino',
-      'Un servicio turístico',
-      'Una feria o congreso',
-      'Todavía no lo sé',
-    ],
+    subjectUnsure: 'Todavía no lo sé',
     submit: 'Enviar',
     reply: 'Te respondemos a la brevedad',
     fallbackLead: 'O escríbenos directamente a',
@@ -368,18 +393,44 @@ export const en: LandingCopy = {
     illustrationAlt:
       'Schematic map with points of interest connected by a route, inside the Real Travel interface.',
   },
-  showcase: {
-    kicker: 'The content',
-    title: 'What travellers find inside.',
-    lead: 'Places, routes and providers with photography, context and location. The same material travellers browse today across twelve countries.',
-    items: [
-      { src: '/img/foto-5.jpeg', label: 'Routes', alt: 'A cyclist riding a gravel road beside a glacial river surrounded by snowy mountains.' },
-      { src: '/img/foto-6.jpeg', label: 'Cities', alt: 'A city square at dusk with a lit colonial building.' },
-      { src: '/img/foto-1.jpeg', label: 'Nature', alt: 'A wooden walkway over a turquoise lake between forested mountains.' },
-      { src: '/img/foto-3.jpeg', label: 'Heritage', alt: 'A historic palace with a classical façade seen from the street.' },
+  mapExplorer: {
+    kicker: 'The map',
+    title: 'Every place is a point on the map.',
+    lead: 'This is how a territory is organised inside Real Travel: points of interest with their own page, routes connecting them and providers around them.',
+    hint: 'Tap a point on the map',
+    points: [
+      {
+        id: 'naturaleza',
+        label: 'Nature',
+        blurb: 'Viewpoints, trails and landscapes, with their exact location and how to get there.',
+        src: '/img/foto-1.jpeg',
+        alt: 'A wooden walkway over a turquoise lake between forested mountains.',
+      },
+      {
+        id: 'rutas',
+        label: 'Routes',
+        blurb: 'Itineraries that put several points in order: what to see first and what comes next.',
+        src: '/img/foto-5.jpeg',
+        alt: 'A cyclist riding a gravel road beside a glacial river surrounded by snowy mountains.',
+      },
+      {
+        id: 'ciudades',
+        label: 'Cities',
+        blurb: 'The town centre with its squares, shops and the providers signed up to the destination.',
+        src: '/img/foto-6.jpeg',
+        alt: 'A city square at dusk with a lit colonial building.',
+      },
+      {
+        id: 'patrimonio',
+        label: 'Heritage',
+        blurb: 'Historic buildings and landmarks with the context an ordinary map never gives.',
+        src: '/img/foto-3.jpeg',
+        alt: 'A historic palace with a classical façade seen from the street.',
+      },
     ],
     platformCaption: 'The platform today',
     platformAlt: 'Explore view of the Real Travel platform: search, featured destination and a list of places.',
+    platformCta: 'Open the platform',
   },
   problem: {
     kicker: 'The problem',
@@ -430,6 +481,7 @@ export const en: LandingCopy = {
     lead: 'From a whole destination to a single provider or a one-off event.',
     detailIncludes: 'What the infrastructure includes',
     detailBenefits: 'Benefits',
+    interested: 'I’m interested!',
     helpTitle: 'Not sure which one?',
     helpBody: 'Tell us your case and we’ll recommend the right product.',
     helpCta: 'Let’s talk',
@@ -586,12 +638,7 @@ export const en: LandingCopy = {
       email: 'you@email.com',
       message: 'Your destination, service or event...',
     },
-    subjectOptions: [
-      'A destination',
-      'A tourism service',
-      'A trade show or conference',
-      'I’m not sure yet',
-    ],
+    subjectUnsure: 'I’m not sure yet',
     submit: 'Send',
     reply: 'We reply shortly',
     fallbackLead: 'Or write to us directly at',

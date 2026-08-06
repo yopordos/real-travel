@@ -92,6 +92,19 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
                     {product.note}
                   </p>
                 )}
+
+                {/* Lleva al formulario con este producto ya elegido */}
+                <a
+                  href={`#contacto-${product.id}`}
+                  className="mt-6 inline-flex w-full items-center justify-center px-5 py-3 text-[14px] font-semibold"
+                  style={{
+                    background: 'var(--rt-red-700)',
+                    color: 'var(--rt-white-text)',
+                    borderRadius: 'var(--rt-radius)',
+                  }}
+                >
+                  {copy.interested}
+                </a>
               </div>
             </details>
           ))}

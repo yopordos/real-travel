@@ -1,4 +1,7 @@
-import type { LandingCopy } from '@/lib/landing-copy'
+'use client'
+
+import { useEffect, useState } from 'react'
+import type { LandingCopy, Product } from '@/lib/landing-copy'
 import { CONTAINER, Kicker } from './primitives'
 
 const FIELD: React.CSSProperties = {
@@ -13,9 +16,41 @@ const FIELD: React.CSSProperties = {
 
 const LABEL = 'block mb-2 text-[13px] font-medium'
 
-export function Contact({ copy }: { copy: LandingCopy['contact'] }) {
+/** Prefijo de los anclas que dejan preseleccionado un producto: #contacto-<id>. */
+const ANCHOR = 'contacto-'
+
+export function Contact({
+  copy,
+  products,
+}: {
+  copy: LandingCopy['contact']
+  products: Product[]
+}) {
+  const options = [...products.map(p => p.name), copy.subjectUnsure]
+  const [subject, setSubject] = useState(options[0])
+
+  // "¡Me interesa!" enlaza a #contacto-<id>: el navegador salta al formulario y
+  // aquí se deja elegido ese producto, para que el mensaje llegue ya concretado.
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = decodeURIComponent(window.location.hash.replace('#', ''))
+      if (!hash.startsWith(ANCHOR)) return
+      const product = products.find(p => p.id === hash.slice(ANCHOR.length))
+      if (product) setSubject(product.name)
+    }
+
+    applyHash()
+    window.addEventListener('hashchange', applyHash)
+    return () => window.removeEventListener('hashchange', applyHash)
+  }, [products])
+
   return (
     <section id="contacto" className="py-16 md:py-24 scroll-mt-20">
+      {/* Destino de los enlaces "¡Me interesa!" de cada producto */}
+      {products.map(p => (
+        <span key={p.id} id={`${ANCHOR}${p.id}`} className="sr-only" />
+      ))}
+
       <div className={CONTAINER}>
         <div className="grid gap-10 lg:gap-16 lg:grid-cols-2 lg:items-start">
           <div>
@@ -104,11 +139,18 @@ export function Contact({ copy }: { copy: LandingCopy['contact'] }) {
               </div>
 
               <div>
-                <label htmlFor="tipo" className={LABEL}>
+                <label htmlFor="servicio" className={LABEL}>
                   {copy.fields.subject}
                 </label>
-                <select id="tipo" name="tipo" className="px-4 py-3" style={FIELD} defaultValue={copy.subjectOptions[0]}>
-                  {copy.subjectOptions.map(option => (
+                <select
+                  id="servicio"
+                  name="servicio"
+                  className="px-4 py-3"
+                  style={FIELD}
+                  value={subject}
+                  onChange={e => setSubject(e.target.value)}
+                >
+                  {options.map(option => (
                     <option key={option} value={option}>
                       {option}
                     </option>

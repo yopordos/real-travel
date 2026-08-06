@@ -2,6 +2,8 @@ import Image from 'next/image'
 import type { LandingCopy } from '@/lib/landing-copy'
 import { CONTAINER, Kicker, PrimaryButton, SecondaryButton } from './primitives'
 
+const WEBAPP = 'https://webapp.realtravelapp.com/'
+
 export function Hero({ copy }: { copy: LandingCopy }) {
   return (
     <section className="pt-12 pb-16 md:pt-20 md:pb-24">
@@ -67,23 +69,38 @@ export function Hero({ copy }: { copy: LandingCopy }) {
             />
           </div>
 
-          <Image
-            src="/img/plataforma-explorar.png"
-            alt={copy.showcase.platformAlt}
-            width={1280}
-            height={860}
-            priority
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            className="relative w-full h-auto"
-            style={{ borderRadius: 'var(--rt-radius)', boxShadow: 'var(--rt-shadow-lg, 0 14px 38px rgba(12,12,19,0.16))' }}
-          />
-
-          <figcaption
-            className="relative mt-3 text-[11px] font-semibold uppercase"
-            style={{ letterSpacing: '0.08em', color: 'var(--rt-white-text)' }}
+          {/* La captura abre la plataforma real: lo que se ve es lo que se visita */}
+          <a
+            href={WEBAPP}
+            target="_blank"
+            rel="noreferrer"
+            className="relative block group"
+            aria-label={`${copy.mapExplorer.platformCta} — ${copy.mapExplorer.platformAlt}`}
           >
-            {copy.showcase.platformCaption}
-          </figcaption>
+            <Image
+              src="/img/plataforma-explorar.png"
+              alt=""
+              width={1280}
+              height={860}
+              priority
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="w-full h-auto transition-transform duration-300 group-hover:scale-[1.01]"
+              style={{
+                borderRadius: 'var(--rt-radius)',
+                boxShadow: 'var(--rt-shadow-lg, 0 14px 38px rgba(12,12,19,0.16))',
+              }}
+            />
+
+            <figcaption
+              className="mt-3 flex items-center justify-between gap-3 text-[11px] font-semibold uppercase"
+              style={{ letterSpacing: '0.08em', color: 'var(--rt-white-text)' }}
+            >
+              <span>{copy.mapExplorer.platformCaption}</span>
+              <span className="group-hover:underline underline-offset-4">
+                {copy.mapExplorer.platformCta} ↗
+              </span>
+            </figcaption>
+          </a>
         </figure>
       </div>
     </section>
