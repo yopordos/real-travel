@@ -49,7 +49,16 @@ export interface LandingCopy {
     title: string
     lead: string
     hint: string
-    proof: { id: string; tab: string; title: string; blurb: string; bullets: string[]; src: string; alt: string }[]
+    proof: {
+      id: string
+      tab: string
+      title: string
+      blurb: string
+      bullets: string[]
+      src: string
+      alt: string
+      badge?: string
+    }[]
     platformCaption: string
     platformAlt: string
     platformCta: string
@@ -157,6 +166,21 @@ export const es: LandingCopy = {
         ],
         src: '/img/plataforma-comercios.png',
         alt: 'Vista Red Travel de la plataforma: tarjetas de comercios con etiquetas de descuento y filtros.',
+      },
+      {
+        id: 'rutas',
+        tab: 'Rutas',
+        badge: 'En desarrollo',
+        title: 'El recorrido completo, parada por parada.',
+        blurb: 'Una ruta del destino sobre el mapa, con sus paradas ordenadas y quién la creó. En desarrollo: ya funciona, todavía no está abierto a todos los destinos.',
+        bullets: [
+          'Duración, distancia y número de paradas',
+          'Cada parada con foto, categoría y valoración',
+          'Trazado sobre el mapa, en orden de recorrido',
+          'Crédito al operador que arma la ruta',
+        ],
+        src: '/img/plataforma-ruta.png',
+        alt: 'Ruta Naturaleza y volcán de Puerto Varas en la plataforma: panel con duración, distancia y paradas, junto al mapa con el recorrido trazado.',
       },
     ],
     platformCaption: 'La plataforma, hoy',
@@ -454,6 +478,21 @@ export const en: LandingCopy = {
         ],
         src: '/img/plataforma-comercios.png',
         alt: 'Red Travel view on the platform: business cards with discount labels and filters.',
+      },
+      {
+        id: 'rutas',
+        tab: 'Routes',
+        badge: 'In development',
+        title: 'The full itinerary, stop by stop.',
+        blurb: 'A route of the destination on the map, with its stops in order and credit to whoever built it. In development: it already works, it is not open to every destination yet.',
+        bullets: [
+          'Duration, distance and number of stops',
+          'Each stop with photo, category and rating',
+          'Drawn on the map, in walking order',
+          'Credit to the operator that builds the route',
+        ],
+        src: '/img/plataforma-ruta.png',
+        alt: 'Naturaleza y volcán route for Puerto Varas on the platform: a panel with duration, distance and stops next to the map with the drawn itinerary.',
       },
     ],
     platformCaption: 'The platform today',

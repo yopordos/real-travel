@@ -40,6 +40,19 @@ export function PlatformProof({ copy }: { copy: LandingCopy['mapExplorer'] }) {
                 }}
               >
                 {p.tab}
+                {p.badge && (
+                  <span
+                    className="ml-2 px-2 py-0.5 text-[10px] font-semibold uppercase align-middle"
+                    style={{
+                      letterSpacing: '0.06em',
+                      borderRadius: 'var(--rt-radius-pill)',
+                      background: isActive ? 'rgba(242,243,247,0.22)' : 'var(--rt-amber-100)',
+                      color: isActive ? 'var(--rt-white-text)' : 'var(--rt-amber-600, #d9882e)',
+                    }}
+                  >
+                    {p.badge}
+                  </span>
+                )}
               </button>
             )
           })}
@@ -73,6 +86,21 @@ export function PlatformProof({ copy }: { copy: LandingCopy['mapExplorer'] }) {
                 aria-hidden={i !== active}
               />
             ))}
+
+            {item.badge && (
+              <span
+                className="absolute left-4 top-4 px-3 py-1.5 text-[11px] font-semibold uppercase"
+                style={{
+                  letterSpacing: '0.08em',
+                  borderRadius: 'var(--rt-radius-pill)',
+                  background: 'var(--rt-amber-500)',
+                  color: 'var(--rt-ink)',
+                  boxShadow: 'var(--rt-shadow-sm)',
+                }}
+              >
+                {item.badge}
+              </span>
+            )}
           </div>
 
           <div>
