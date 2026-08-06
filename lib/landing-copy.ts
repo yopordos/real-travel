@@ -44,6 +44,14 @@ export interface LandingCopy {
     chips: string[]
     illustrationAlt: string
   }
+  showcase: {
+    kicker: string
+    title: string
+    lead: string
+    items: { src: string; label: string; alt: string }[]
+    platformCaption: string
+    platformAlt: string
+  }
   problem: { kicker: string; title: string; lead: string; items: Feature[] }
   how: { kicker: string; title: string; lead: string; steps: Feature[] }
   model: { kicker: string; title: string; lead: string }
@@ -98,6 +106,19 @@ export const es: LandingCopy = {
     chips: ['Destinos', 'Prestadores turísticos', 'Ferias y congresos'],
     illustrationAlt:
       'Mapa esquemático con puntos de interés conectados por una ruta, dentro de la interfaz de Real Travel.',
+  },
+  showcase: {
+    kicker: 'El contenido',
+    title: 'Lo que el viajero encuentra dentro.',
+    lead: 'Lugares, rutas y prestadores con fotografía, contexto y ubicación. El mismo material que hoy recorren viajeros en doce países.',
+    items: [
+      { src: '/img/foto-5.jpeg', label: 'Rutas', alt: 'Ciclista recorriendo un camino de ripio junto a un río glaciar rodeado de montañas nevadas.' },
+      { src: '/img/foto-6.jpeg', label: 'Ciudades', alt: 'Plaza de una ciudad al atardecer con un edificio colonial iluminado.' },
+      { src: '/img/foto-1.jpeg', label: 'Naturaleza', alt: 'Pasarela de madera sobre un lago turquesa entre montañas boscosas.' },
+      { src: '/img/foto-3.jpeg', label: 'Patrimonio', alt: 'Palacio histórico de fachada clásica visto desde la calle.' },
+    ],
+    platformCaption: 'La plataforma, hoy',
+    platformAlt: 'Vista Explorar de la plataforma de Real Travel: buscador, destino recomendado y listado de lugares.',
   },
   problem: {
     kicker: 'El problema',
@@ -346,6 +367,19 @@ export const en: LandingCopy = {
     chips: ['Destinations', 'Tourism providers', 'Trade shows and conferences'],
     illustrationAlt:
       'Schematic map with points of interest connected by a route, inside the Real Travel interface.',
+  },
+  showcase: {
+    kicker: 'The content',
+    title: 'What travellers find inside.',
+    lead: 'Places, routes and providers with photography, context and location. The same material travellers browse today across twelve countries.',
+    items: [
+      { src: '/img/foto-5.jpeg', label: 'Routes', alt: 'A cyclist riding a gravel road beside a glacial river surrounded by snowy mountains.' },
+      { src: '/img/foto-6.jpeg', label: 'Cities', alt: 'A city square at dusk with a lit colonial building.' },
+      { src: '/img/foto-1.jpeg', label: 'Nature', alt: 'A wooden walkway over a turquoise lake between forested mountains.' },
+      { src: '/img/foto-3.jpeg', label: 'Heritage', alt: 'A historic palace with a classical façade seen from the street.' },
+    ],
+    platformCaption: 'The platform today',
+    platformAlt: 'Explore view of the Real Travel platform: search, featured destination and a list of places.',
   },
   problem: {
     kicker: 'The problem',

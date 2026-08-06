@@ -1,6 +1,7 @@
 import type { LandingCopy } from '@/lib/landing-copy'
 import { MarketingNav } from './MarketingNav'
 import { Hero } from './Hero'
+import { Showcase } from './Showcase'
 import { Problem } from './Problem'
 import { HowItWorks } from './HowItWorks'
 import { Model } from './Model'
@@ -33,6 +34,7 @@ export function Landing({ copy }: { copy: LandingCopy }) {
 
       <main id="contenido">
         <Hero copy={copy} />
+        <Showcase copy={copy.showcase} />
         <Problem copy={copy.problem} />
         <HowItWorks copy={copy.how} />
         <Model copy={copy.model} />
