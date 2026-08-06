@@ -1,7 +1,15 @@
 # Landing de plataforma — Real Travel
 
 **Fecha:** 2026-08-05
-**Estado:** aprobado para planificación
+**Estado:** superado el 2026-08-06 — ver "Actualización" al final
+
+> **Actualización 2026-08-06.** Apareció material de origen que reemplaza las
+> hipótesis de este spec: `Dropbox/WIP/01. Real Travel/WebApp/02. Landing/Real_Travel_Landing.pdf`
+> (estructura y copy comercial reales) y `.../01. Design System/` (tokens de marca).
+> La landing implementada sigue ese material, no las secciones descritas aquí.
+> Lo que sí sobrevive de este documento: la arquitectura de route groups, la
+> estrategia de i18n con diccionario tipado y el criterio del formulario sin
+> falso mensaje de éxito. Ver la sección final para el detalle de qué cambió.
 
 ## Contexto
 
@@ -169,3 +177,36 @@ El repo no tiene framework de pruebas y este spec no introduce uno — sería an
 | Leaflet en el hero castiga el LCP | Carga diferida por viewport, LCP es el titular |
 | Las cifras envejecen | Viven en `landing-copy.ts`, en un solo lugar por idioma |
 | El formulario parece funcional y no lo es | Sin falso mensaje de éxito; el TODO queda visible en el código |
+
+---
+
+## Actualización 2026-08-06 — lo que reemplaza a este spec
+
+**Origen del contenido.** `Real_Travel_Landing.pdf` define el guion comercial: el
+argumento es "la infraestructura digital de tu destino, ya construida", y el
+público se amplía de gestores públicos a tres segmentos — destinos, prestadores
+turísticos y organizadores de ferias. Sustituye a la hipótesis de las tres capas.
+
+**Identidad.** El design system oficial manda sobre el PDF, que está maquetado en
+teal y naranja sin respaldo en ningún token. La landing usa Poppins, rojo
+`#b50933`, ámbar `#f2a65a`, fondo `#f2f3ef` y radio de 12px, expuestos como
+tokens `--rt-*` bajo la clase `.rt-scope`. La app del viajero conserva su
+identidad editorial (Fraunces, crema): son dos registros que conviven sin
+pisarse.
+
+**Secciones implementadas.** Hero con ilustración SVG · El problema · Tres pasos ·
+Pagas por lo que usas (único bloque en rojo pleno) · Cinco productos · Detalle de
+cada producto en `<details>` nativo · Por qué Real Travel · Cuéntanos tu caso.
+
+**Decisiones de criterio.**
+
+- Los pasos van numerados porque el orden es real; las tarjetas de producto no,
+  porque son alternativas, no secuencia.
+- El detalle de productos usa `<details>` nativo: abre con teclado, funciona sin
+  JavaScript y el navegador lo despliega solo al saltar desde "Ver qué incluye".
+- El PDF escribe "Aparecés ante viajeros"; el design system fija tú informal, así
+  que la landing dice "Apareces".
+- Sin revelado por scroll: el contenido está visible desde el primer render.
+
+**Pendiente.** Conectar el `action` del formulario. El correo `hola@realtravelapp.com`
+es un supuesto y hay que confirmarlo.
