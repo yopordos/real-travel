@@ -11,7 +11,10 @@ const CARD: React.CSSProperties = {
 /**
  * Catálogo y detalle en una sola pieza: cada producto es un <details> que se
  * abre en su propia tarjeta. Nativo — funciona con teclado y sin JavaScript.
- * El grid alinea al inicio para que abrir una tarjeta no estire a sus vecinas.
+ *
+ * El catálogo queda a ras porque el summary tiene una altura mínima común y el
+ * control +/− se ancla a su pie. No se usa el estirado del grid: haría que
+ * abrir una tarjeta estirase a sus vecinas hasta la misma altura.
  */
 export function Products({ copy }: { copy: LandingCopy['products'] }) {
   return (
@@ -22,7 +25,7 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 items-start">
           {copy.items.map(product => (
             <details key={product.id} id={product.id} className="group scroll-mt-24" style={CARD}>
-              <summary className="p-6 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
+              <summary className="flex flex-col md:min-h-[300px] p-6 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                 <Kicker>{product.segment}</Kicker>
 
                 <span className="block mt-3 font-semibold" style={{ fontSize: '20px', lineHeight: 1.24 }}>
@@ -41,17 +44,18 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
                   {product.pitch}
                 </span>
 
-                <span
-                  className="flex items-center justify-center w-9 h-9 mt-6 text-[20px] font-semibold leading-none"
-                  style={{
-                    background: 'var(--rt-red-50)',
-                    color: 'var(--rt-red-700)',
-                    borderRadius: 'var(--rt-radius-pill)',
-                  }}
-                  aria-hidden="true"
-                >
-                  <span className="group-open:hidden">+</span>
-                  <span className="hidden group-open:inline">−</span>
+                <span className="block pt-6" style={{ marginTop: 'auto' }} aria-hidden="true">
+                  <span
+                    className="flex items-center justify-center w-9 h-9 text-[20px] font-semibold leading-none"
+                    style={{
+                      background: 'var(--rt-red-50)',
+                      color: 'var(--rt-red-700)',
+                      borderRadius: 'var(--rt-radius-pill)',
+                    }}
+                  >
+                    <span className="group-open:hidden">+</span>
+                    <span className="hidden group-open:inline">−</span>
+                  </span>
                 </span>
               </summary>
 
@@ -92,24 +96,26 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
             </details>
           ))}
 
-          <div className="p-6" style={CARD}>
+          <div className="flex flex-col md:min-h-[300px] p-6" style={CARD}>
             <h3 className="font-semibold" style={{ fontSize: '20px', lineHeight: 1.24 }}>
               {copy.helpTitle}
             </h3>
             <p className="mt-3 text-[15px]" style={{ color: 'var(--rt-slate-60)', lineHeight: 1.5 }}>
               {copy.helpBody}
             </p>
-            <a
-              href="#contacto"
-              className="mt-6 inline-flex px-5 py-2.5 text-[14px] font-semibold"
-              style={{
-                background: 'var(--rt-red-700)',
-                color: 'var(--rt-white-text)',
-                borderRadius: 'var(--rt-radius)',
-              }}
-            >
-              {copy.helpCta}
-            </a>
+            <div className="mt-auto pt-6">
+              <a
+                href="#contacto"
+                className="inline-flex px-5 py-2.5 text-[14px] font-semibold"
+                style={{
+                  background: 'var(--rt-red-700)',
+                  color: 'var(--rt-white-text)',
+                  borderRadius: 'var(--rt-radius)',
+                }}
+              >
+                {copy.helpCta}
+              </a>
+            </div>
           </div>
         </div>
       </div>
