@@ -25,7 +25,7 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3 items-start">
           {copy.items.map(product => (
             <details key={product.id} id={product.id} className="group scroll-mt-24 rt-lift" style={CARD}>
-              <summary className="flex flex-col md:min-h-[300px] p-6 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
+              <summary className="flex flex-col md:min-h-[340px] p-6 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
                 <span className="flex items-center gap-2.5">
                   <Kicker>{product.segment}</Kicker>
                   {product.badge && (
@@ -124,7 +124,7 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
             </details>
           ))}
 
-          <div className="flex flex-col md:min-h-[300px] p-6" style={CARD}>
+          <div className="flex flex-col md:min-h-[340px] p-6" style={CARD}>
             <h3 className="font-semibold" style={{ fontSize: '20px', lineHeight: 1.24 }}>
               {copy.helpTitle}
             </h3>
