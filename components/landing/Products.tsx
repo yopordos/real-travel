@@ -26,7 +26,22 @@ export function Products({ copy }: { copy: LandingCopy['products'] }) {
           {copy.items.map(product => (
             <details key={product.id} id={product.id} className="group scroll-mt-24 rt-lift" style={CARD}>
               <summary className="flex flex-col md:min-h-[300px] p-6 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
-                <Kicker>{product.segment}</Kicker>
+                <span className="flex items-center gap-2.5">
+                  <Kicker>{product.segment}</Kicker>
+                  {product.badge && (
+                    <span
+                      className="px-2 py-0.5 text-[10px] font-semibold uppercase"
+                      style={{
+                        letterSpacing: '0.06em',
+                        borderRadius: 'var(--rt-radius-pill)',
+                        background: 'var(--rt-amber-100)',
+                        color: 'var(--rt-amber-600, #d9882e)',
+                      }}
+                    >
+                      {product.badge}
+                    </span>
+                  )}
+                </span>
 
                 <span className="block mt-3 font-semibold" style={{ fontSize: '20px', lineHeight: 1.24 }}>
                   {product.name}
