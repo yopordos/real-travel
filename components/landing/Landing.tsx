@@ -5,7 +5,6 @@ import { Problem } from './Problem'
 import { HowItWorks } from './HowItWorks'
 import { Model } from './Model'
 import { Products } from './Products'
-import { ProductDetails } from './ProductDetails'
 import { WhyUs } from './WhyUs'
 import { Contact } from './Contact'
 import { MarketingFooter } from './MarketingFooter'
@@ -38,7 +37,6 @@ export function Landing({ copy }: { copy: LandingCopy }) {
         <HowItWorks copy={copy.how} />
         <Model copy={copy.model} />
         <Products copy={copy.products} />
-        <ProductDetails copy={copy.products} />
         <WhyUs copy={copy.why} />
         <Contact copy={copy.contact} />
       </main>

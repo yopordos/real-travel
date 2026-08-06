@@ -57,7 +57,6 @@ export interface LandingCopy {
     helpCta: string
     detailIncludes: string
     detailBenefits: string
-    seeDetail: string
   }
   why: { kicker: string; title: string; lead: string; items: Feature[] }
   contact: {
@@ -149,7 +148,6 @@ export const es: LandingCopy = {
     lead: 'Desde el destino completo hasta el prestador individual y el evento puntual.',
     detailIncludes: 'Qué infraestructura incluye',
     detailBenefits: 'Beneficios',
-    seeDetail: 'Ver qué incluye',
     helpTitle: '¿No sabes cuál elegir?',
     helpBody: 'Cuéntanos tu caso y te recomendamos el producto ideal.',
     helpCta: 'Hablemos',
@@ -398,7 +396,6 @@ export const en: LandingCopy = {
     lead: 'From a whole destination to a single provider or a one-off event.',
     detailIncludes: 'What the infrastructure includes',
     detailBenefits: 'Benefits',
-    seeDetail: 'See what’s included',
     helpTitle: 'Not sure which one?',
     helpBody: 'Tell us your case and we’ll recommend the right product.',
     helpCta: 'Let’s talk',
