@@ -91,7 +91,32 @@ export function Hero({ copy }: { copy: LandingCopy }) {
               </a>
             </div>
 
-            <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-2">
+            <dl className="mt-10 flex flex-wrap gap-x-9 gap-y-4">
+              {copy.hero.stats.map(stat => (
+                <div key={stat.label}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd>
+                    <span
+                      className="block font-bold"
+                      style={{
+                        fontSize: 'clamp(26px, 3vw, 34px)',
+                        lineHeight: 1,
+                        letterSpacing: '-0.02em',
+                        color: 'var(--rt-white-text)',
+                        fontVariantNumeric: 'tabular-nums',
+                      }}
+                    >
+                      {stat.value}
+                    </span>
+                    <span className="block mt-1.5 text-[12px]" style={{ color: 'rgba(242,243,247,0.7)' }}>
+                      {stat.label}
+                    </span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <ul className="mt-8 flex flex-wrap gap-x-7 gap-y-2">
               {copy.hero.chips.map(chip => (
                 <li
                   key={chip}

@@ -46,6 +46,7 @@ export interface LandingCopy {
     ctaSecondary: string
     chips: string[]
     illustrationAlt: string
+    stats: { value: string; label: string }[]
   }
   mapExplorer: {
     kicker: string
@@ -119,6 +120,11 @@ export const es: LandingCopy = {
     ctaPrimary: 'Quiero sumarme',
     ctaSecondary: 'Ver productos',
     chips: ['Destinos', 'Prestadores turísticos', 'Ferias y congresos'],
+    stats: [
+      { value: '+22.000', label: 'puntos levantados' },
+      { value: '14', label: 'países' },
+      { value: '+190', label: 'países con viajeros' },
+    ],
     illustrationAlt:
       'Mapa esquemático con puntos de interés conectados por una ruta, dentro de la interfaz de Real Travel.',
   },
@@ -419,6 +425,11 @@ export const en: LandingCopy = {
     ctaPrimary: 'I want to join',
     ctaSecondary: 'See products',
     chips: ['Destinations', 'Tourism providers', 'Trade shows and conferences'],
+    stats: [
+      { value: '+22,000', label: 'points surveyed' },
+      { value: '14', label: 'countries' },
+      { value: '+190', label: 'countries with travellers' },
+    ],
     illustrationAlt:
       'Schematic map with points of interest connected by a route, inside the Real Travel interface.',
   },
