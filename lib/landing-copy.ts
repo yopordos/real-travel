@@ -29,6 +29,7 @@ export interface LandingCopy {
   altHref: string
   altLabel: string
   nav: {
+    identity: string
     problem: string
     how: string
     products: string
@@ -67,6 +68,15 @@ export interface LandingCopy {
     platformAlt: string
     platformCta: string
   }
+  identity: {
+    kicker: string
+    title: string
+    lead: string
+    weAreTitle: string
+    weAre: string[]
+    weAreNotTitle: string
+    weAreNot: string[]
+  }
   problem: { kicker: string; title: string; lead: string; items: Feature[] }
   how: { kicker: string; title: string; lead: string; steps: Feature[] }
   model: { kicker: string; title: string; lead: string }
@@ -104,6 +114,7 @@ export const es: LandingCopy = {
   altHref: '/en',
   altLabel: 'EN',
   nav: {
+    identity: 'Qué es',
     problem: 'El problema',
     how: 'Cómo funciona',
     products: 'Productos',
@@ -195,6 +206,25 @@ export const es: LandingCopy = {
     platformCaption: 'La plataforma, hoy',
     platformAlt: 'Vista Explorar de la plataforma de Real Travel: buscador, destino recomendado y listado de lugares.',
     platformCta: 'Abrir la plataforma',
+  },
+  identity: {
+    kicker: 'Qué es Real Travel',
+    title: 'Una plataforma de gestión de destino, no un marketplace.',
+    lead: 'Ordenamos y publicamos la información turística de tu territorio, y la servimos en la web para que el viajero entre sin instalar nada.',
+    weAreTitle: 'Lo que somos',
+    weAre: [
+      'Una plataforma de gestión del destino: tu información turística ordenada, publicada y medible',
+      'En formato web: el viajero entra desde el navegador, sin descargar ninguna app',
+      'El destino manda: tú validas qué se publica y la información sigue siendo tuya',
+      'Datos de uso que vuelven a tu gestión',
+    ],
+    weAreNotTitle: 'Lo que no somos',
+    weAreNot: [
+      'Un marketplace: no vendemos paquetes, entradas ni alojamiento',
+      'No cobramos comisión sobre lo que venden tus prestadores',
+      'No competimos con tu oferta ni con tus operadores',
+      'No reemplazamos tu web institucional: convivimos con ella',
+    ],
   },
   problem: {
     kicker: 'El problema',
@@ -384,6 +414,7 @@ export const en: LandingCopy = {
   altHref: '/',
   altLabel: 'ES',
   nav: {
+    identity: 'What it is',
     problem: 'The problem',
     how: 'How it works',
     products: 'Products',
@@ -475,6 +506,25 @@ export const en: LandingCopy = {
     platformCaption: 'The platform today',
     platformAlt: 'Explore view of the Real Travel platform: search, featured destination and a list of places.',
     platformCta: 'Open the platform',
+  },
+  identity: {
+    kicker: 'What Real Travel is',
+    title: 'A destination management platform, not a marketplace.',
+    lead: 'We organise and publish your territory’s tourism information, and serve it on the web so travellers can get in without installing anything.',
+    weAreTitle: 'What we are',
+    weAre: [
+      'A destination management platform: your tourism information organised, published and measurable',
+      'On the web: travellers open it in a browser, with no app to download',
+      'The destination decides: you approve what gets published and the information stays yours',
+      'Usage data that comes back to your team',
+    ],
+    weAreNotTitle: 'What we are not',
+    weAreNot: [
+      'A marketplace: we don’t sell packages, tickets or accommodation',
+      'We don’t take a commission on what your providers sell',
+      'We don’t compete with your offer or with your operators',
+      'We don’t replace your institutional website: we sit alongside it',
+    ],
   },
   problem: {
     kicker: 'The problem',

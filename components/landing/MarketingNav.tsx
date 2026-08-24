@@ -22,6 +22,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
   const linkColor = onDark ? 'rgba(242,243,247,0.9)' : 'var(--rt-slate)'
 
   const links = [
+    { href: '#que-es', label: copy.nav.identity },
     { href: '#problema', label: copy.nav.problem },
     { href: '#como-funciona', label: copy.nav.how },
     { href: '#productos', label: copy.nav.products },
