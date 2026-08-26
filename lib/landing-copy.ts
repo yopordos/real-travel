@@ -399,7 +399,7 @@ export const es: LandingCopy = {
     submit: 'Enviar',
     reply: 'Te respondemos a la brevedad',
     fallbackLead: 'O escríbenos directamente a',
-    fallbackEmail: 'hola@realtravelapp.com',
+    fallbackEmail: 'hola@realtravel.cl',
   },
   footer: {
     tagline: 'Tecnología aplicada al turismo · Latinoamérica y Centroamérica',
@@ -699,7 +699,7 @@ export const en: LandingCopy = {
     submit: 'Send',
     reply: 'We reply shortly',
     fallbackLead: 'Or write to us directly at',
-    fallbackEmail: 'hola@realtravelapp.com',
+    fallbackEmail: 'hola@realtravel.cl',
   },
   footer: {
     tagline: 'Technology applied to tourism · Latin America and Central America',
