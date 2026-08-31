@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import type { LandingCopy } from '@/lib/landing-copy'
+import { legal } from '@/lib/legal-copy'
 import { CONTAINER } from './primitives'
 
 export function MarketingFooter({ copy }: { copy: LandingCopy }) {
+  const docs = legal[copy.locale]
+
   return (
     <footer style={{ background: 'var(--rt-ink)' }}>
       <div className={`${CONTAINER} py-10 flex flex-wrap items-center gap-x-8 gap-y-4`}>
@@ -29,6 +32,12 @@ export function MarketingFooter({ copy }: { copy: LandingCopy }) {
           </a>
           <Link href="/explorar" style={{ color: 'rgba(242,243,247,0.75)' }}>
             {copy.footer.appLink}
+          </Link>
+          <Link href={docs.terms.href} style={{ color: 'rgba(242,243,247,0.75)' }}>
+            {docs.terms.title}
+          </Link>
+          <Link href={docs.privacy.href} style={{ color: 'rgba(242,243,247,0.75)' }}>
+            {docs.privacy.title}
           </Link>
           <Link href={copy.altHref} style={{ color: 'rgba(242,243,247,0.75)' }}>
             {copy.altLabel}

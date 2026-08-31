@@ -5,21 +5,38 @@ import { useEffect, useState } from 'react'
 import type { LandingCopy } from '@/lib/landing-copy'
 import { CONTAINER } from './primitives'
 
-export function MarketingNav({ copy }: { copy: LandingCopy }) {
+export function MarketingNav({
+  copy,
+  variant = 'home',
+  altHref,
+}: {
+  copy: LandingCopy
+  /** `inner`: páginas sin hero, donde el nav no tiene fondo oscuro debajo. */
+  variant?: 'home' | 'inner'
+  /** La misma página en el otro idioma. Por defecto, la landing. */
+  altHref?: string
+}) {
+  const inner = variant === 'inner'
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
+    if (inner) return
     const onScroll = () => setScrolled(window.scrollY > 16)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [inner])
 
   const home = copy.locale === 'es' ? '/' : '/en'
 
-  // Sobre el hero oscuro el nav va en claro; al hacer scroll vuelve al papel
-  const onDark = !scrolled
+  // Sobre el hero oscuro el nav va en claro; al hacer scroll vuelve al papel.
+  // Sin hero no hay nada oscuro debajo, así que arranca en papel y se queda.
+  const solid = inner || scrolled
+  const onDark = !solid
   const linkColor = onDark ? 'rgba(242,243,247,0.9)' : 'var(--rt-slate)'
+
+  // Fuera del home, las anclas de sección solo funcionan volviendo a él
+  const section = (hash: string) => (inner ? `${home}${hash}` : hash)
 
   const links = [
     { href: '#que-es', label: copy.nav.identity },
@@ -33,9 +50,9 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
     <header
       className="fixed inset-x-0 top-0 z-50 transition-colors duration-200"
       style={{
-        background: scrolled ? 'rgba(242, 243, 239, 0.9)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
-        borderBottom: `1px solid ${scrolled ? 'var(--rt-border-soft)' : 'transparent'}`,
+        background: solid ? 'rgba(242, 243, 239, 0.9)' : 'transparent',
+        backdropFilter: solid ? 'blur(10px)' : 'none',
+        borderBottom: `1px solid ${solid ? 'var(--rt-border-soft)' : 'transparent'}`,
       }}
     >
       <nav className={`${CONTAINER} h-16 flex items-center gap-6`}>
@@ -60,7 +77,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
           {links.map(link => (
             <a
               key={link.href}
-              href={link.href}
+              href={section(link.href)}
               className="text-[14px] font-medium"
               style={{ color: linkColor }}
             >
@@ -81,7 +98,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
           </a>
 
           <a
-            href="#contacto"
+            href={section('#contacto')}
             className="hidden sm:inline text-[14px] font-medium"
             style={{ color: linkColor }}
           >
@@ -89,7 +106,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
           </a>
 
           <Link
-            href={copy.altHref}
+            href={altHref ?? copy.altHref}
             className="text-[12px] font-semibold px-2 py-1"
             style={{
               color: onDark ? 'rgba(242,243,247,0.65)' : 'var(--rt-slate-40)',
@@ -101,7 +118,7 @@ export function MarketingNav({ copy }: { copy: LandingCopy }) {
           </Link>
 
           <a
-            href="#contacto"
+            href={section('#contacto')}
             className="px-5 py-2.5 text-[14px] font-semibold"
             style={{
               background: 'var(--rt-red-700)',
